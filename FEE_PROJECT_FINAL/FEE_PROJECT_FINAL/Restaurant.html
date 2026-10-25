@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant - Zwinkit</title>
+
+    <!-- ORIGINAL GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Montenegrin+Gothic+One&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Tangerine:wght@400;700&family=Yuyu&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            padding-top: 80px;
+        }
+
+        header {
+            height: 80px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            background-color: rgb(72, 41, 3);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 38px;
+            font-weight: bold;
+            color: #e6c89c;
+        }
+
+        .z {
+            display: inline-block;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: burlywood;
+            font-size: 17px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: rgb(233, 165, 75);
+        }
+
+        .restaurant-hero {
+            margin: 20px;
+            height: 310px;
+            border-radius: 22px;
+            overflow: hidden;
+            background-color: #f9f2c8;
+            display: flex;
+            position: relative;
+        }
+
+        .hero-content {
+            width: 50%;
+            padding: 35px 40px;
+            z-index: 2;
+        }
+
+        .hero-small {
+            color: #8b4d20;
+            letter-spacing: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .hero-content h1 {
+            color: #63320f;
+            font-size: 50px;
+            line-height: 0.95;
+            margin: 5px 0 15px;
+        }
+
+        .hero-text {
+            color: #70401f;
+            font-size: 17px;
+            line-height: 1.4;
+            margin-bottom: 22px;
+        }
+
+        .restaurant-search {
+            height: 48px;
+            width: 100%;
+            max-width: 590px;
+            background-color: white;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(139, 90, 21, 0.15);
+        }
+
+        .location {
+            padding: 0 18px;
+            width: 150px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .search-box {
+            flex: 1;
+            border-left: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-left: 18px;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .restaurant-search button {
+            height: 40px;
+            margin-right: 5px;
+            padding: 0 22px;
+            border: none;
+            border-radius: 12px;
+            background-color: #7b421b;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .hero-image {
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 0 22px 22px 0;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .popular-section {
+            background-color: #cfcaa4;
+            margin: 25px 35px;
+            padding: 30px 35px;
+            border-radius: 25px;
+            box-shadow: 0px 5px 18px rgba(150, 170, 130, 0.35);
+        }
+
+        .popular-title {
+            text-align: center;
+            font-size: 32px;
+            color: #4a2c1a;
+            margin-bottom: 5px;
+        }
+
+        .popular-subtitle {
+            text-align: center;
+            color: #76563d;
+            margin-bottom: 25px;
+        }
+
+        .popular-container {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .popular-card {
+            width: 24%;
+            background-color: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.10);
+            transition: 0.3s;
+        }
+
+        .popular-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .popular-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .popular-info {
+            padding: 12px 15px;
+        }
+
+        .popular-info h3 {
+            font-size: 19px;
+            margin: 0 0 7px;
+            color: #3b2414;
+        }
+
+        .popular-info p {
+            font-size: 14px;
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .popular-info span {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .cusine-section {
+            background-color: #f7eee0;
+            margin: 25px 35px;
+            padding: 28px 35px 32px;
+            border-radius: 25px;
+            box-shadow: 0px 5px 18px rgba(190, 150, 100, 0.25);
+        }
+
+        .cusinie-title {
+            text-align: center;
+            font-size: 32px;
+            color: #4a2c1a;
+            margin: 0 0 5px;
+        }
+
+        .cuisines-subtitle {
+            text-align: center;
+            color: #76563d;
+            font-size: 16px;
+            margin: 0 0 25px;
+        }
+
+        .cuisine-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .cuisine-card {
+            flex: 1;
+            background-color: white;
+            border-radius: 18px;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.10);
+            transition: 0.3s ease;
+        }
+
+        .cuisine-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .cuisine-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 14px;
+            display: block;
+        }
+
+        .cuisine-card h3 {
+            margin: 12px 0 5px;
+            font-size: 19px;
+            color: #4a2c1a;
+        }
+
+        .restaurant-offer-section {
+            background-color: #e8edf2;
+            margin: 25px 35px;
+            padding: 30px 35px;
+            border-radius: 25px;
+            box-shadow: 0px 5px 18px rgba(120, 140, 160, 0.25);
+        }
+
+        .restaurant-offer-title {
+            text-align: center;
+            font-size: 32px;
+            color: #4a2c1a;
+            margin: 0 0 5px;
+        }
+
+        .restaurant-offer-subtitle {
+            text-align: center;
+            color: #76563d;
+            margin: 0 0 25px;
+        }
+
+        .restaurant-offer-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .restaurant-offer-card {
+            flex: 1;
+            height: 150px;
+            padding: 15px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .offer-one {
+            background-color: #a9793f;
+        }
+
+        .offer-two {
+            background-color: #b6810e;
+        }
+
+        .offer-three {
+            background-color: #865c36;
+        }
+
+        .offer-content {
+            padding-left: 5px;
+        }
+
+        .offer-content span {
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #70401f;
+        }
+
+        .offer-content h3 {
+            font-size: 25px;
+            margin: 5px 0;
+            color: #542b16;
+        }
+
+        .offer-content p {
+            font-size: 13px;
+            color: #70401f;
+            margin: 5px 0 12px;
+        }
+
+        .offer-content button {
+            border: none;
+            padding: 9px 15px;
+            border-radius: 8px;
+            background-color: #6b3512;
+            color: white;
+            cursor: pointer;
+        }
+
+        .restaurant-offer-card img {
+            width: 55%;
+            height: 120%;
+            object-fit: cover;
+            border-radius: 14px;
+            flex-shrink: 0;
+        }
+
+        .filter-section {
+            background-color: #f7eee0;
+            margin: 25px 35px;
+            padding: 25px 35px;
+            border-radius: 25px;
+            box-shadow: 0px 5px 18px rgba(190, 150, 100, 0.25);
+        }
+
+        .filter-left {
+            margin-bottom: 20px;
+        }
+
+        .filter-left h2 {
+            margin: 0 0 5px;
+            color: #4a2c1a;
+            font-size: 25px;
+        }
+
+        .filter-left p {
+            margin: 0;
+            color: #76563d;
+            font-size: 14px;
+        }
+
+        .filter-container {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn,
+        .sort-btn {
+            padding: 11px 18px;
+            border-radius: 10px;
+            border: 1px solid #d5c1a9;
+            background-color: white;
+            color: #4a2c1a;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .filter-btn:hover,
+        .sort-btn:hover {
+            background-color: #f3e1ca;
+        }
+
+        select.filter-btn,
+        select.sort-btn {
+            max-width: 100%;
+        }
+
+        #offersFilter.active {
+            background-color: #6b3512;
+            color: white;
+        }
+
+        .sort-btn {
+            margin-left: auto;
+            background-color: #6b3512;
+            color: white;
+            border: none;
+        }
+
+        .all-restaurant-section {
+            background-color: #ddd2c1;
+            margin: 25px 35px;
+            padding: 30px 35px;
+            border-radius: 25px;
+            box-shadow: 0px 5px 18px rgba(130, 105, 75, 0.30);
+        }
+
+        .all-restaurant-title {
+            text-align: center;
+            font-size: 32px;
+            color: #4a2c1a;
+            margin: 0 0 5px;
+        }
+
+        .all-restaurant-subtitle {
+            text-align: center;
+            color: #76563d;
+            margin: 0 0 25px;
+        }
+
+        .all-restaurant-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .all-restaurant-card {
+            background-color: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.10);
+            transition: 0.3s;
+        }
+
+        .all-restaurant-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.16);
+        }
+
+        .all-restaurant-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .all-restaurant-info {
+            padding: 15px;
+        }
+
+        .all-restaurant-info h3 {
+            margin: 0 0 7px;
+            font-size: 20px;
+            color: #3b2414;
+        }
+
+        .all-restaurant-info p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .all-restaurant-info .rating {
+            color: #555;
+            font-weight: 500;
+        }
+
+        .all-restaurant-info span {
+            display: block;
+            margin-top: 8px;
+            font-size: 13px;
+            color: #8b5a15;
+        }
+
+        .footer {
+            background-color: #2b1d12;
+            color: #fffaf3;
+            margin-top: 30px;
+            padding: 45px 60px 20px;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .footer-main {
+            display: flex;
+            justify-content: space-between;
+            gap: 50px;
+            max-width: 1300px;
+            margin: auto;
+        }
+
+        .footer-brand {
+            width: 22%;
+        }
+
+        .footer-brand h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .footer-brand h2 span {
+            color: #e6c89c;
+        }
+
+        .footer-brand p {
+            color: #d8c7b5;
+            margin-bottom: 25px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            width: 35px;
+            height: 35px;
+            border: 1px solid #9d8975;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-column h3 {
+            color: #e6c89c;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .footer-column a {
+            color: #d8c7b5;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #5b4939;
+            margin-top: 35px;
+            padding-top: 18px;
+            color: #bba999;
+            font-size: 13px;
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background-color: burlywood;
+            border-radius: 3px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                height: 70px;
+                padding: 0 20px;
+            }
+
+            body {
+                padding-top: 70px;
+            }
+
+            .logo {
+                font-size: 30px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            header nav {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: rgb(72, 41, 3);
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 10px 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            header nav a {
+                display: block;
+                padding: 14px 5px;
+                border-bottom: 1px solid rgba(222, 184, 135, 0.25);
+            }
+
+            #menu-toggle:checked ~ nav {
+                display: flex;
+            }
+
+            .restaurant-hero {
+                height: auto;
+                margin: 15px;
+                flex-direction: column;
+            }
+
+            .hero-content,
+            .hero-image {
+                width: 100%;
+            }
+
+            .hero-content {
+                padding: 25px 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 38px;
+            }
+
+            .hero-image {
+                height: 220px;
+                border-radius: 0 0 22px 22px;
+            }
+
+            .restaurant-search {
+                height: auto;
+                flex-wrap: wrap;
+                padding: 8px;
+                gap: 8px;
+            }
+
+            .location {
+                width: auto;
+                padding: 8px;
+            }
+
+            .search-box {
+                min-width: 0;
+                padding: 8px;
+            }
+
+            .restaurant-search button {
+                margin: 0;
+            }
+
+            .popular-section,
+            .cusine-section,
+            .restaurant-offer-section,
+            .filter-section,
+            .all-restaurant-section {
+                margin: 15px;
+                padding: 22px 16px;
+            }
+
+            .popular-container,
+            .cuisine-container,
+            .restaurant-offer-container {
+                flex-wrap: wrap;
+            }
+
+            .popular-card {
+                width: calc(50% - 10px);
+            }
+
+            .cuisine-card {
+                flex: 1 1 calc(50% - 15px);
+                min-width: 0;
+            }
+
+            .restaurant-offer-card {
+                flex: 1 1 100%;
+            }
+
+            .all-restaurant-container {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .footer {
+                padding: 30px 20px 15px;
+            }
+
+            .footer-main {
+                flex-wrap: wrap;
+                gap: 30px;
+            }
+
+            .footer-brand {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .hero-text {
+                font-size: 15px;
+            }
+
+            .popular-card,
+            .cuisine-card {
+                width: 100%;
+                flex: 1 1 100%;
+            }
+
+            .all-restaurant-container {
+                grid-template-columns: 1fr;
+            }
+
+            .popular-title,
+            .cusinie-title,
+            .restaurant-offer-title,
+            .all-restaurant-title {
+                font-size: 26px;
+            }
+
+            .restaurant-offer-card {
+                height: auto;
+                min-height: 150px;
+                padding: 12px;
+                gap: 8px;
+            }
+
+            .offer-content h3 {
+                font-size: 20px;
+            }
+
+            .restaurant-offer-card img {
+                width: 40%;
+                height: 110px;
+            }
+
+            .sort-btn {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <div class="logo"><span class="z">Z</span>winkit</div>
+
+    <input type="checkbox" id="menu-toggle">
+
+    <label for="menu-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <nav>
+        <a href="Home.html">Home</a>
+        <a href="Restaurant.html">Restaurant</a>
+        <a href="Restaurant.html#offers">Offers</a>
+        <a href="About.html">About Us</a>
+        <a href="Cart.html">Cart</a>
+        <a href="Login.html">Login/Sign Up</a>
+    </nav>
+</header>
+
+<section class="restaurant-hero">
+    <div class="hero-content">
+        <p class="hero-small">GOOD FOOD • GREAT MOOD</p>
+
+        <h1>Explore<br>Restaurants</h1>
+
+        <p class="hero-text">
+            Find the best restaurants and delicious food near you.
+        </p>
+
+        <div class="restaurant-search">
+            <div class="location">📍 Ludhiana</div>
+
+            <div class="search-box">
+                <input type="text" placeholder="Search restaurants....">
+            </div>
+
+            <button type="button">Search</button>
+        </div>
+    </div>
+
+    <div class="hero-image">
+        <img src="images/pasta.png" alt="Delicious Pasta">
+    </div>
+</section>
+
+<section class="popular-section">
+    <h2 class="popular-title">Popular Near You</h2>
+    <p class="popular-subtitle">Loved by foodies in Ludhiana</p>
+
+    <div class="popular-container">
+        <div class="popular-card">
+            <img src="images/r5.jpg" alt="Friend's Dhaba">
+            <div class="popular-info">
+                <h3>Friend's Dhaba</h3>
+                <p>⭐ 4.7 • 30-35 min</p>
+                <span>North Indian, Punjabi, Tandoor</span>
+            </div>
+        </div>
+
+        <div class="popular-card">
+            <img src="images/r1.jpg" alt="Salsa Spice & Grill">
+            <div class="popular-info">
+                <h3>Salsa Spice & Grill</h3>
+                <p>⭐ 4.8 • 25-30 min</p>
+                <span>Continental, Italian, Grills</span>
+            </div>
+        </div>
+
+        <div class="popular-card">
+            <img src="images/r3.jpg" alt="The Tables">
+            <div class="popular-info">
+                <h3>The Tables</h3>
+                <p>⭐ 4.7 • 30-45 min</p>
+                <span>Italian, Continental, North Indian</span>
+            </div>
+        </div>
+
+        <div class="popular-card">
+            <img src="images/r7.jpg" alt="Under The Mango Tree">
+            <div class="popular-info">
+                <h3>Under The Mango Tree</h3>
+                <p>⭐ 4.7 • 10-15 min</p>
+                <span>North Indian, Mughlai, Tandoor</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cusine-section">
+    <h2 class="cusinie-title">Top Cuisines</h2>
+    <p class="cuisines-subtitle">Explore your favourite flavours</p>
+
+    <div class="cuisine-container">
+        <div class="cuisine-card">
+            <img src="images/pizza2.jpg" alt="Pizza">
+            <h3>Pizza</h3>
+        </div>
+
+        <div class="cuisine-card">
+            <img src="images/burger2.jpg" alt="Burger">
+            <h3>Burger</h3>
+        </div>
+
+        <div class="cuisine-card">
+            <img src="images/dessert.jpg" alt="Desserts">
+            <h3>Desserts</h3>
+        </div>
+
+        <div class="cuisine-card">
+            <img src="images/rolls.jpg" alt="Rolls">
+            <h3>Rolls</h3>
+        </div>
+    </div>
+</section>
+
+<section class="restaurant-offer-section" id="offers">
+    <h2 class="restaurant-offer-title">Exciting Offers</h2>
+    <p class="restaurant-offer-subtitle">
+        Grab amazing deals on your favourite restaurants
+    </p>
+
+    <div class="restaurant-offer-container">
+        <div class="restaurant-offer-card offer-one" data-offer="flat150">
+            <div class="offer-content">
+                <span>FLAT</span>
+                <h3>₹150 OFF</h3>
+                <p>On orders above ₹499</p>
+                <button type="button">Order Now →</button>
+            </div>
+            <img src="images/offer1.jpg" alt="Offer">
+        </div>
+
+        <div class="restaurant-offer-card offer-two" data-offer="freeDelivery">
+            <div class="offer-content">
+                <span>SPECIAL</span>
+                <h3>FREE DELIVERY</h3>
+                <p>On orders above ₹299</p>
+                <button type="button">Order Now →</button>
+            </div>
+            <img src="images/offer2.jpg" alt="Offer">
+        </div>
+
+        <div class="restaurant-offer-card offer-three" data-offer="percent30">
+            <div class="offer-content">
+                <span>GET</span>
+                <h3>30% OFF</h3>
+                <p>On selected restaurants</p>
+                <button type="button">Explore →</button>
+            </div>
+            <img src="images/offer3.jpg" alt="Offer">
+        </div>
+    </div>
+</section>
+
+<section class="filter-section">
+    <div class="filter-left">
+        <h2>Find Your Perfect Restaurant</h2>
+        <p>Choose according to your taste and preference</p>
+    </div>
+
+    <div class="filter-container">
+        <select class="filter-btn" id="cuisineFilter">
+            <option value="">🍽️ All Cuisines</option>
+            <option value="italian">Italian</option>
+            <option value="continental">Continental</option>
+            <option value="grills">Grills</option>
+            <option value="north indian">North Indian</option>
+            <option value="punjabi">Punjabi</option>
+            <option value="tandoor">Tandoor</option>
+            <option value="sweets">Sweets</option>
+            <option value="snacks">Snacks</option>
+            <option value="paranthas">Paranthas</option>
+            <option value="beverages">Beverages</option>
+            <option value="mughlai">Mughlai</option>
+        </select>
+
+        <select class="filter-btn" id="ratingFilter">
+            <option value="0">⭐ Any Rating</option>
+            <option value="4.8">4.8 and above</option>
+            <option value="4.7">4.7 and above</option>
+        </select>
+
+        <select class="filter-btn" id="deliveryFilter">
+            <option value="0">⏱️ Any Delivery Time</option>
+            <option value="15">Up to 15 min</option>
+            <option value="30">Up to 30 min</option>
+            <option value="35">Up to 35 min</option>
+            <option value="45">Up to 45 min</option>
+        </select>
+
+        <select class="filter-btn" id="priceFilter">
+            <option value="">💰 Any Price</option>
+            <option value="₹">₹ Budget</option>
+            <option value="₹₹">₹₹ Moderate</option>
+        </select>
+
+        <button class="filter-btn" id="offersFilter" type="button"
+            aria-pressed="false">🛍️ Offers: Off</button>
+
+        <select class="sort-btn" id="sortFilter">
+            <option value="default">↕ Sort By</option>
+            <option value="rating-high">Rating: High to Low</option>
+            <option value="rating-low">Rating: Low to High</option>
+            <option value="delivery-low">Delivery: Fastest First</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="name">Name: A to Z</option>
+        </select>
+
+        <button class="filter-btn" id="resetFilters" type="button">
+            Reset
+        </button>
+    </div>
+</section>
+
+<section class="all-restaurant-section">
+    <h2 class="all-restaurant-title">All Restaurants</h2>
+    <p class="all-restaurant-subtitle">
+        Discover the best places to eat near you
+    </p>
+
+    <div class="all-restaurant-container">
+        <div class="all-restaurant-card" data-offer="yes">
+            <img src="images/r1.jpg" alt="Salsa Spice & Grill">
+            <div class="all-restaurant-info">
+                <h3>Salsa Spice & Grill</h3>
+                <p class="rating">⭐ 4.8 • 25-30 min</p>
+                <p>Continental, Italian, Grills</p>
+                <span>₹₹ • Ludhiana</span>
+            </div>
+        </div>
+
+        <div class="all-restaurant-card">
+            <img src="images/r8.jpg" alt="Barista">
+            <div class="all-restaurant-info">
+                <h3>Barista</h3>
+                <p class="rating">⭐ 4.7 • 25-30 min</p>
+                <p>Italian, Continental, North Indian</p>
+                <span>₹₹ • Ludhiana</span>
+            </div>
+        </div>
+
+        <div class="all-restaurant-card" data-offer="yes">
+            <img src="images/r9.jpg" alt="Sagar Ratna">
+            <div class="all-restaurant-info">
+                <h3>Sagar Ratna</h3>
+                <p class="rating">⭐ 4.7 • 40-45 min</p>
+                <p>Sweets, Snacks, North Indian</p>
+                <span>₹ • Ludhiana</span>
+            </div>
+        </div>
+
+        <div class="all-restaurant-card">
+            <img src="images/r10.jpg" alt="Wow! Momos">
+            <div class="all-restaurant-info">
+                <h3>Wow! Momos</h3>
+                <p class="rating">⭐ 4.7 • 30-35 min</p>
+                <p>North Indian, Punjabi, Tandoor</p>
+                <span>₹₹ • Ludhiana</span>
+            </div>
+        </div>
+
+        <div class="all-restaurant-card" data-offer="yes">
+            <img src="images/r11.jpg" alt="Biryani Blues">
+            <div class="all-restaurant-info">
+                <h3>Biryani Blues</h3>
+                <p class="rating">⭐ 4.8 • 10-15 min</p>
+                <p>Paranthas, Beverages</p>
+                <span>₹ • Ludhiana</span>
+            </div>
+        </div>
+
+        <div class="all-restaurant-card">
+            <img src="images/r12.jpg" alt="Gopals">
+            <div class="all-restaurant-info">
+                <h3>Gopals</h3>
+                <p class="rating">⭐ 4.8 • 10-15 min</p>
+                <p>North Indian, Mughlai, Tandoor</p>
+                <span>₹₹ • Ludhiana</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-main">
+        <div class="footer-brand">
+            <h2>Zwinkit</h2>
+            <p>Good food. Great mood.</p>
+
+            <div class="social-links">
+                <a href="#">f</a>
+                <a href="#">◎</a>
+                <a href="#">𝕏</a>
+                <a href="#">▶</a>
+            </div>
+        </div>
+
+        <div class="footer-column">
+            <h3>Company</h3>
+            <a href="About.html">About Us</a>
+            <a href="#">Careers</a>
+            <a href="#">Blog</a>
+            <a href="#">Terms &amp; Conditions</a>
+        </div>
+
+        <div class="footer-column">
+            <h3>Help &amp; Support</h3>
+            <a href="#">Help Center</a>
+            <a href="#">FAQs</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Refund Policy</a>
+        </div>
+
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <a href="#">+91 98765 43210</a>
+            <a href="#">support@zwinkit.com</a>
+            <a href="#">Ludhiana, Punjab</a>
+            <a href="#">India</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 Zwinkit. All rights reserved.
+    </div>
+</footer>
+
+<script>
+    // LOCATION DROPDOWN
+    const locationBox = document.querySelector(".location");
+
+    const cities = [
+        "Ludhiana",
+        "Nangal",
+        "Chandigarh",
+        "Mohali",
+        "Patiala",
+        "Amritsar",
+        "Delhi"
+    ];
+
+    let selectedCity = "Ludhiana";
+
+    locationBox.style.cursor = "pointer";
+    locationBox.title = "Click to change location";
+
+    locationBox.addEventListener("click", function () {
+        if (locationBox.querySelector("select")) {
+            return;
+        }
+
+        const select = document.createElement("select");
+
+        cities.forEach(function (city) {
+            const option = document.createElement("option");
+            option.value = city;
+            option.textContent = city;
+
+            if (city === selectedCity) {
+                option.selected = true;
+            }
+
+            select.appendChild(option);
+        });
+
+        select.style.width = "100%";
+        select.style.border = "none";
+        select.style.background = "white";
+        select.style.fontSize = "14px";
+        select.style.padding = "5px";
+        select.style.outline = "none";
+
+        locationBox.replaceChildren(select);
+        select.focus();
+
+        select.addEventListener("change", function () {
+            selectedCity = select.value;
+            locationBox.textContent = "📍 " + selectedCity;
+
+            document.querySelector(".popular-subtitle").textContent =
+                "Explore popular restaurants in " + selectedCity;
+
+            document.querySelector(".all-restaurant-subtitle").textContent =
+                "Discover restaurants in " + selectedCity;
+        });
+
+        select.addEventListener("blur", function () {
+            locationBox.textContent = "📍 " + selectedCity;
+        });
+    });
+
+
+    // SEARCH AND FILTER ELEMENTS
+    const searchInput = document.querySelector(".search-box input");
+    const searchButton = document.querySelector(".restaurant-search button");
+
+    const popularCards = document.querySelectorAll(".popular-card");
+    const allRestaurantContainer =
+        document.querySelector(".all-restaurant-container");
+
+    const allRestaurantCards = Array.from(
+        document.querySelectorAll(".all-restaurant-card")
+    );
+
+    const cuisineFilter = document.getElementById("cuisineFilter");
+    const ratingFilter = document.getElementById("ratingFilter");
+    const deliveryFilter = document.getElementById("deliveryFilter");
+    const priceFilter = document.getElementById("priceFilter");
+    const offersFilter = document.getElementById("offersFilter");
+    const sortFilter = document.getElementById("sortFilter");
+    const resetFilters = document.getElementById("resetFilters");
+
+    let offersOnly = false;
+
+
+    // NO RESULTS MESSAGE
+    const noResults = document.createElement("p");
+
+    noResults.textContent =
+        "No restaurants found. Try changing your search or filters!";
+
+    noResults.style.textAlign = "center";
+    noResults.style.color = "#63320f";
+    noResults.style.fontSize = "17px";
+    noResults.style.fontWeight = "bold";
+    noResults.style.padding = "20px";
+    noResults.style.display = "none";
+
+    document.querySelector(".all-restaurant-section")
+        .appendChild(noResults);
+
+
+    // GET RESTAURANT RATING
+    function getRating(card) {
+        const match = card.querySelector(".rating")
+            .textContent.match(/([0-9]+\.[0-9]+)/);
+
+        return match ? Number(match[1]) : 0;
+    }
+
+
+    // GET DELIVERY TIME
+    function getDeliveryTime(card) {
+        const match = card.querySelector(".rating")
+            .textContent.match(/([0-9]+)\s*[-–]\s*([0-9]+)\s*min/i);
+
+        return match ? Number(match[2]) : 999;
+    }
+
+
+    // GET PRICE CATEGORY
+    function getPrice(card) {
+        const priceText = card.querySelector(
+            ".all-restaurant-info span"
+        ).textContent;
+
+        return priceText.includes("₹₹") ? 2 : 1;
+    }
+
+
+    // APPLY SEARCH, FILTERS AND SORTING
+    function applyFilters() {
+        const query = searchInput.value.trim().toLowerCase();
+        const cuisine = cuisineFilter.value;
+        const minimumRating = Number(ratingFilter.value);
+        const maximumDelivery = Number(deliveryFilter.value);
+        const price = priceFilter.value;
+
+        let visibleCount = 0;
+
+
+        // SEARCH POPULAR RESTAURANTS
+        popularCards.forEach(function (card) {
+            const matchesSearch =
+                card.textContent.toLowerCase().includes(query);
+
+            card.style.display = matchesSearch ? "" : "none";
+        });
+
+
+        // FILTER ALL RESTAURANTS
+        let cardsToShow = allRestaurantCards.filter(function (card) {
+            const text = card.textContent.toLowerCase();
+
+            const matchesSearch = text.includes(query);
+
+            const matchesCuisine =
+                cuisine === "" || text.includes(cuisine);
+
+            const matchesRating =
+                getRating(card) >= minimumRating;
+
+            const matchesDelivery =
+                maximumDelivery === 0 ||
+                getDeliveryTime(card) <= maximumDelivery;
+
+            const priceText = card.querySelector(
+                ".all-restaurant-info span"
+            ).textContent.trim();
+
+            let matchesPrice = true;
+
+            if (price === "₹") {
+                matchesPrice = /^₹\s*•/.test(priceText);
+            } else if (price === "₹₹") {
+                matchesPrice = priceText.includes("₹₹");
+            }
+
+            const matchesOffers =
+                !offersOnly || card.dataset.offer === "yes";
+
+            return matchesSearch &&
+                matchesCuisine &&
+                matchesRating &&
+                matchesDelivery &&
+                matchesPrice &&
+                matchesOffers;
+        });
+
+
+        // SORT RESTAURANTS
+        const sort = sortFilter.value;
+
+        if (sort === "rating-high") {
+            cardsToShow.sort(function (a, b) {
+                return getRating(b) - getRating(a);
+            });
+        }
+
+        if (sort === "rating-low") {
+            cardsToShow.sort(function (a, b) {
+                return getRating(a) - getRating(b);
+            });
+        }
+
+        if (sort === "delivery-low") {
+            cardsToShow.sort(function (a, b) {
+                return getDeliveryTime(a) - getDeliveryTime(b);
+            });
+        }
+
+        if (sort === "price-low") {
+            cardsToShow.sort(function (a, b) {
+                return getPrice(a) - getPrice(b);
+            });
+        }
+
+        if (sort === "name") {
+            cardsToShow.sort(function (a, b) {
+                const nameA = a.querySelector("h3").textContent;
+                const nameB = b.querySelector("h3").textContent;
+
+                return nameA.localeCompare(nameB);
+            });
+        }
+
+
+        // HIDE ALL CARDS FIRST
+        allRestaurantCards.forEach(function (card) {
+            card.style.display = "none";
+        });
+
+
+        // SHOW MATCHING CARDS IN SORTED ORDER
+        cardsToShow.forEach(function (card) {
+            card.style.display = "";
+            allRestaurantContainer.appendChild(card);
+            visibleCount++;
+        });
+
+
+        // SHOW OR HIDE NO RESULTS MESSAGE
+        noResults.style.display =
+            visibleCount === 0 ? "block" : "none";
+
+
+        // UPDATE HEADING
+        if (
+            query ||
+            cuisine ||
+            minimumRating > 0 ||
+            maximumDelivery > 0 ||
+            price ||
+            offersOnly
+        ) {
+            document.querySelector(".all-restaurant-title").textContent =
+                "Search Results";
+        } else {
+            document.querySelector(".all-restaurant-title").textContent =
+                "All Restaurants";
+        }
+    }
+
+
+    // SEARCH BUTTON
+    searchButton.addEventListener("click", applyFilters);
+
+    searchInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            applyFilters();
+        }
+    });
+
+    searchInput.addEventListener("input", applyFilters);
+
+
+    // FILTER DROPDOWNS
+    cuisineFilter.addEventListener("change", applyFilters);
+    ratingFilter.addEventListener("change", applyFilters);
+    deliveryFilter.addEventListener("change", applyFilters);
+    priceFilter.addEventListener("change", applyFilters);
+    sortFilter.addEventListener("change", applyFilters);
+
+
+    // OFFERS FILTER BUTTON
+    offersFilter.addEventListener("click", function () {
+        offersOnly = !offersOnly;
+
+        offersFilter.classList.toggle("active", offersOnly);
+
+        offersFilter.textContent = offersOnly
+            ? "🛍️ Offers: On"
+            : "🛍️ Offers: Off";
+
+        offersFilter.setAttribute(
+            "aria-pressed",
+            String(offersOnly)
+        );
+
+        applyFilters();
+    });
+
+
+    // RESET ALL FILTERS
+    resetFilters.addEventListener("click", function () {
+        searchInput.value = "";
+        cuisineFilter.value = "";
+        ratingFilter.value = "0";
+        deliveryFilter.value = "0";
+        priceFilter.value = "";
+        sortFilter.value = "default";
+
+        offersOnly = false;
+
+        offersFilter.classList.remove("active");
+        offersFilter.textContent = "🛍️ Offers: Off";
+        offersFilter.setAttribute("aria-pressed", "false");
+
+        applyFilters();
+    });
+
+
+    // SHOW ALL RESTAURANTS WHEN PAGE LOADS
+    applyFilters();
+
+
+    // RESTAURANT CARD LINKS
+    document.querySelectorAll(
+        ".popular-card, .all-restaurant-card"
+    ).forEach(function (card) {
+        const name = card.querySelector("h3").textContent.trim();
+
+        const restaurants = {
+            "Friend's Dhaba": "friends-dhaba",
+            "Under The Mango Tree": "under-the-mango-tree",
+            "Salsa Spice & Grill": "salsa-spice-grill"
+        };
+
+        if (restaurants[name]) {
+            card.style.cursor = "pointer";
+
+            card.addEventListener("click", function () {
+                window.location.href =
+                    "Menu.html?restaurant=" + restaurants[name];
+            });
+        }
+    });
+
+
+    // OFFER BUTTONS
+    document.querySelectorAll(
+        ".restaurant-offer-card button"
+    ).forEach(function (button) {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            const offerCard =
+                button.closest(".restaurant-offer-card");
+
+            const offerCode = offerCard
+                ? offerCard.dataset.offer
+                : "";
+
+            if (offerCode) {
+                try {
+                    localStorage.setItem(
+                        "zwinkitSelectedOffer",
+                        offerCode
+                    );
+                } catch (error) {
+                    console.warn(
+                        "Offer preference could not be saved.",
+                        error
+                    );
+                }
+            }
+
+            window.location.href = "Cart.html";
+        });
+    });
+</script>
+
+</body>
+</html>

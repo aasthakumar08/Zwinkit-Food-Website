@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cart - Zwinkit</title>
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Montenegrin+Gothic+One&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Roboto:ital,wght@0,100..900&display=swap"
+    rel="stylesheet">
+
+
+<style>
+
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    body {
+        background: #fffaf0;
+        color: #3b2414;
+        padding-top: 80px;
+    }
+
+
+    header {
+        height: 80px;
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 0 40px;
+
+        background-color: rgb(72, 41, 3);
+
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+        position: fixed;
+
+        top: 0;
+        left: 0;
+
+        z-index: 1000;
+    }
+
+
+ 
+
+    .logo {
+        font-size: 38px;
+        font-weight: bold;
+        color: #e6c89c;
+    }
+
+
+    .z {
+        display: inline-block;
+    }
+
+
+    nav {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+
+
+    nav a {
+        text-decoration: none;
+
+        color: burlywood;
+
+        font-size: 17px;
+        font-weight: 500;
+    }
+
+
+    nav a:hover {
+        color: rgb(233, 165, 75);
+    }
+
+
+     
+
+    nav a.active {
+        color: #ffffff;
+    }
+
+ 
+    #menu-toggle {
+        display: none;
+    }
+
+
+    
+    .hamburger {
+        display: none;
+
+        color: #e6c89c;
+
+        font-size: 32px;
+
+        cursor: pointer;
+
+        line-height: 1;
+    }
+
+ 
+
+    .page {
+        width: 92%;
+        max-width: 1250px;
+
+        margin: 35px auto 45px;
+    }
+
+
+ 
+
+    .cart-layout {
+        display: grid;
+
+        grid-template-columns: 1.6fr 0.9fr;
+
+        gap: 25px;
+
+        align-items: start;
+    }
+
+ 
+    .cart-box {
+        background: #ffffff;
+
+        border: 1px solid #ddd;
+
+        border-radius: 20px;
+
+        padding: 25px;
+
+        box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+    }
+
+
+    .cart-box h1 {
+        font-size: 30px;
+
+        margin-bottom: 6px;
+    }
+
+
+    .items-count {
+        color: #777;
+
+        font-size: 13px;
+
+        margin-bottom: 20px;
+    }
+ 
+    .cart-scroll {
+        max-height: 470px;
+
+        overflow-y: auto;
+
+        padding-right: 8px;
+    }
+
+ 
+    .cart-item {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        gap: 15px;
+
+        border: 1px solid #e4ddd3;
+
+        border-radius: 14px;
+
+        padding: 13px;
+
+        margin-bottom: 13px;
+
+        background: #ffffff;
+
+        transition: 0.2s;
+    }
+
+
+    .cart-item:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+ 
+
+    .cart-left {
+        display: flex;
+
+        align-items: center;
+
+        gap: 15px;
+
+        min-width: 0;
+    }
+ 
+    .cart-item img {
+        width: 85px;
+        height: 70px;
+
+        object-fit: cover;
+
+        border-radius: 10px;
+
+        flex-shrink: 0;
+    }
+
+ 
+
+    .cart-item h3 {
+        font-size: 16px;
+
+        margin-bottom: 5px;
+    }
+
+
+    .cart-item p {
+        font-size: 12px;
+
+        color: #777;
+
+        margin: 3px 0;
+    }
+ 
+
+    .price {
+        font-weight: bold;
+
+        color: #70460c !important;
+
+        font-size: 15px !important;
+    }
+
+
+ 
+    .qty {
+        display: flex;
+
+        align-items: center;
+
+        gap: 7px;
+
+        flex-shrink: 0;
+    }
+
+
+    .qty a,
+    .qty span {
+
+        width: 30px;
+        height: 30px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        border: 1px solid #ddd;
+
+        border-radius: 7px;
+
+        text-decoration: none;
+
+        color: #4a2c1a;
+
+        background: #ffffff;
+
+        font-size: 14px;
+    }
+
+
+    .qty a:hover {
+        background: #f5e9d8;
+    }
+
+    .btn {
+        display: inline-block;
+
+        background: #70400f;
+
+        color: #ffffff;
+
+        text-decoration: none;
+
+        border-radius: 8px;
+
+        padding: 10px 16px;
+
+        font-size: 13px;
+
+        margin-top: 10px;
+
+        transition: 0.2s;
+    }
+
+
+    .btn:hover {
+        background: #482903;
+    }
+
+
+    .btn.light {
+        background: #f5e9d8;
+
+        color: #4a2c1a;
+    }
+
+
+    .btn.light:hover {
+        background: #e6d4b9;
+    }
+
+
+ 
+    .summary {
+
+        background: #ffffff;
+
+        border: 1px solid #ddd;
+
+        border-radius: 20px;
+
+        padding: 25px;
+
+        box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+
+        position: sticky;
+
+        top: 105px;
+    }
+
+
+    .summary h2 {
+
+        font-size: 22px;
+
+        margin-bottom: 20px;
+    }
+
+
+ 
+
+    .row {
+
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        margin: 15px 0;
+
+        font-size: 14px;
+    }
+
+ 
+
+    .discount {
+        color: green;
+    }
+
+ 
+
+    .total {
+
+        border-top: 1px solid #ddd;
+
+        padding-top: 17px;
+
+        margin-top: 20px;
+
+        font-size: 19px;
+
+        font-weight: bold;
+    }
+
+
+ 
+    .checkout {
+
+        display: block;
+
+        width: 100%;
+
+        text-align: center;
+
+        background: #70400f;
+
+        color: #ffffff;
+
+        text-decoration: none;
+
+        padding: 12px;
+
+        border-radius: 9px;
+
+        margin-top: 18px;
+
+        font-size: 14px;
+
+        font-weight: bold;
+
+        transition: 0.2s;
+    }
+
+
+    .checkout:hover {
+        background: #482903;
+    }
+
+
+
+    .note {
+
+        margin-top: 18px;
+
+        background: #f5e9d8;
+
+        padding: 15px;
+
+        border-radius: 12px;
+
+        font-size: 12px;
+
+        line-height: 1.5;
+    }
+
+
+ 
+
+    .footer {
+
+        background-color: #2b1d12;
+
+        color: #fffaf3;
+
+        margin-top: 30px;
+
+        padding: 45px 60px 20px;
+
+        border-radius: 3px 3px 0 0;
+    }
+
+
+    .footer-main {
+
+        display: flex;
+
+        justify-content: space-between;
+
+        gap: 50px;
+
+        max-width: 1300px;
+
+        margin: auto;
+    }
+
+
+ 
+
+    .footer-brand {
+        width: 22%;
+    }
+
+
+    .footer-brand h2 {
+
+        font-size: 30px;
+
+        margin-bottom: 10px;
+    }
+
+
+    .footer-brand h2 span {
+        color: #e6c89c;
+    }
+
+
+    .footer-brand p {
+
+        color: #d8c7b5;
+
+        margin-bottom: 25px;
+    }
+
+
+ 
+
+    .social-links {
+
+        display: flex;
+
+        gap: 12px;
+    }
+
+
+    .social-links a {
+
+        width: 35px;
+        height: 35px;
+
+        border: 1px solid #9d8975;
+
+        border-radius: 50%;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        color: white;
+
+        text-decoration: none;
+    }
+ 
+
+    .footer-column {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+
+    .footer-column h3 {
+
+        color: #e6c89c;
+
+        font-size: 18px;
+
+        margin-bottom: 8px;
+    }
+
+
+    .footer-column a {
+
+        color: #d8c7b5;
+
+        text-decoration: none;
+
+        font-size: 14px;
+    }
+
+
+    .footer-column a:hover {
+        color: white;
+    }
+
+ 
+    .footer-bottom {
+
+        text-align: center;
+
+        border-top: 1px solid #5b4939;
+
+        margin-top: 35px;
+
+        padding-top: 18px;
+
+        color: #bba999;
+
+        font-size: 13px;
+    }
+
+
+ 
+    @media (max-width: 850px) {
+
+
+        header {
+            padding: 0 18px;
+        }
+
+
+        .logo {
+            font-size: 30px;
+        }
+
+
+        nav {
+            gap: 10px;
+        }
+
+
+        nav a {
+            font-size: 12px;
+        }
+
+
+        .cart-layout {
+            grid-template-columns: 1fr;
+        }
+
+
+        .summary {
+            position: static;
+        }
+
+
+        .footer-main {
+            flex-wrap: wrap;
+        }
+
+
+        .footer-brand {
+            width: 100%;
+        }
+
+    }
+
+
+ 
+
+    @media (max-width: 600px) {
+
+
+        header {
+
+            height: 70px;
+
+            padding: 0 20px;
+        }
+
+
+        body {
+            padding-top: 70px;
+        }
+
+
+        .logo {
+            font-size: 28px;
+        }
+
+
+        .hamburger {
+
+            display: block;
+
+            color: #e6c89c;
+
+            font-size: 30px;
+
+            cursor: pointer;
+
+            z-index: 2001;
+        }
+
+
+ 
+        header nav {
+
+            display: none;
+
+            position: absolute;
+
+            top: 70px;
+
+            left: 0;
+
+            width: 100%;
+
+            background-color: rgb(72, 41, 3);
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 0;
+
+            padding: 10px 0 20px;
+
+            box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15);
+
+            z-index: 2000;
+        }
+
+ 
+
+        #menu-toggle:checked ~ nav {
+
+            display: flex;
+        }
+
+
+       
+        header nav a {
+
+            display: block;
+
+            width: 100%;
+
+            text-align: center;
+
+            padding: 14px;
+
+            font-size: 16px;
+
+            color: burlywood;
+
+            text-decoration: none;
+        }
+
+
+        header nav a:hover {
+
+            background-color: #5d3505;
+
+            color: #ffffff;
+        }
+
+
+        /* PAGE */
+
+        .page {
+
+            width: 94%;
+
+            margin-top: 25px;
+        }
+
+
+        /* CART BOX */
+
+        .cart-box,
+        .summary {
+
+            padding: 18px;
+        }
+
+
+        .cart-box h1 {
+            font-size: 25px;
+        }
+
+
+ 
+        .cart-item {
+
+            align-items: flex-start;
+
+            flex-direction: column;
+        }
+
+
+        .cart-left {
+
+            align-items: flex-start;
+
+            width: 100%;
+        }
+
+
+        .cart-item img {
+
+            width: 75px;
+
+            height: 60px;
+        }
+
+
+        .cart-item h3 {
+            font-size: 14px;
+        }
+
+
+ 
+        .qty {
+
+            width: 100%;
+
+            justify-content: flex-end;
+
+            gap: 5px;
+        }
+
+
+        .qty a,
+        .qty span {
+
+            width: 30px;
+
+            height: 30px;
+        }
+
+
+ 
+        .cart-scroll {
+
+            max-height: none;
+
+            overflow-y: visible;
+
+            padding-right: 0;
+        }
+
+
+ 
+        .footer {
+
+            padding: 30px 25px 20px;
+        }
+
+
+        .footer-main {
+
+            flex-direction: column;
+
+            gap: 30px;
+        }
+
+
+        .footer-brand {
+            width: 100%;
+        }
+
+
+        .footer-column {
+            gap: 10px;
+        }
+
+    }
+
+</style>
+
+</head>
+
+<body>
+ 
+
+<header>
+
+
+    <div class="logo">
+
+        <span class="z">Z</span>winkit
+
+    </div>
+    <input type="checkbox" id="menu-toggle">
+
+    <label for="menu-toggle" class="hamburger">
+        ☰
+    </label>
+    <nav>
+
+        <a href="Home.html">
+            Home
+        </a>
+
+        <a href="Restaurant.html">
+            Restaurant
+        </a>
+
+        <a href="offers.html">
+            Offers
+        </a>
+
+        <a href="About.html">
+            About Us
+        </a>
+
+        <a href="Cart.html" class="active">
+            Cart
+        </a>
+
+        <a href="Login.html">
+            Login/Sign Up
+        </a>
+
+    </nav>
+
+
+</header>
+
+<main class="page">
+
+    <div class="cart-layout">
+
+        <section class="cart-box">
+
+
+            <h1>
+                🛒 Your Cart
+            </h1>
+
+
+            <p class="items-count">0 items</p>
+
+            <div class="cart-scroll" id="cart-items">
+
+            </div>
+
+
+
+            <a
+                class="btn light"
+                href="Restaurant.html"
+            >
+
+                ← Continue Shopping
+
+            </a>
+
+
+        </section>
+
+
+        <aside class="summary">
+
+
+            <h2>
+                Price Details
+            </h2>
+
+
+            <div class="row">
+
+                <span>
+                    Item Total
+                </span>
+
+                <span>
+                    ₹785
+                </span>
+
+            </div>
+
+
+            <div class="row">
+
+                <span>
+                    Delivery Fee
+                </span>
+
+                <span>
+                    ₹20
+                </span>
+
+            </div>
+
+
+            <div class="row discount">
+
+                <span>
+                    Discount
+                </span>
+
+                <span>
+                    -₹50
+                </span>
+
+            </div>
+
+
+            <div class="row total">
+
+                <span>
+                    Total
+                </span>
+
+                <span>
+                    ₹755
+                </span>
+
+            </div>
+
+
+            <a
+                class="checkout"
+                href="checkout.html"
+            >
+
+                Proceed to Checkout
+
+            </a>
+
+
+            <div class="note">
+
+                🎁 Good food. Great mood.
+
+                <br><br>
+
+                You can add more items
+                from the restaurant.
+
+            </div>
+
+
+        </aside>
+
+
+    </div>
+
+</main>
+
+
+<footer class="footer">
+
+
+    <div class="footer-main">
+
+
+  
+
+        <div class="footer-brand">
+
+
+            <h2>
+                Zwinkit
+            </h2>
+
+
+            <p>
+                Good food. Great mood.
+            </p>
+
+
+            <div class="social-links">
+
+                <a href="#">
+                    f
+                </a>
+
+                <a href="#">
+                    ◎
+                </a>
+
+                <a href="#">
+                    𝕏
+                </a>
+
+                <a href="#">
+                    ▶
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-column">
+
+
+            <h3>
+                Company
+            </h3>
+
+
+            <a href="About.html">
+                About Us
+            </a>
+
+
+            <a href="#">
+                Careers
+            </a>
+
+
+            <a href="#">
+                Blog
+            </a>
+
+
+            <a href="#">
+                Terms & Conditions
+            </a>
+
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+
+            <h3>
+                Help & Support
+            </h3>
+
+
+            <a href="About.html">
+                Help Center
+            </a>
+
+
+            <a href="About.html">
+                FAQs
+            </a>
+
+
+            <a href="About.html">
+                Privacy Policy
+            </a>
+
+
+            <a href="About.html">
+                Refund Policy
+            </a>
+
+
+        </div>
+
+
+        <div class="footer-column">
+
+
+            <h3>
+                Contact Us
+            </h3>
+
+
+            <a href="#">
+                +91 98765 43210
+            </a>
+
+
+            <a href="#">
+                support@zwinkit.com
+            </a>
+
+
+            <a href="#">
+                Ludhiana, Punjab
+            </a>
+
+
+            <a href="#">
+                India
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 Zwinkit. All rights reserved.
+
+    </div>
+
+
+</footer>
+
+
+<script>
+(function () {
+    const itemsCount = document.querySelector(".items-count");
+    const cartItemsBox = document.querySelector(".cart-scroll");
+    const summaryRows = document.querySelectorAll(".summary .row");
+    const checkoutButton = document.querySelector(".checkout");
+
+    function readCart() {
+        const keys = ["zwinkitCart", "cartItems", "cart"];
+        for (const key of keys) {
+            try {
+                const raw = localStorage.getItem(key);
+                if (!raw) continue;
+                const parsed = JSON.parse(raw);
+                if (Array.isArray(parsed)) return { key: key, items: parsed };
+                if (parsed && Array.isArray(parsed.items)) return { key: key, items: parsed.items };
+            } catch (error) {
+                console.warn("Could not read cart data from " + key, error);
+            }
+        }
+        return { key: "zwinkitCart", items: [] };
+    }
+
+    const cartData = readCart();
+    let cart = cartData.items.map(function (item, index) {
+        const name = item.name || item.title || item.foodName || item.productName || "Food item";
+        const price = Number(item.price ?? item.itemPrice ?? item.amount ?? 0);
+        const quantity = Math.max(1, Number(item.quantity ?? item.qty ?? 1) || 1);
+        return {
+            id: String(item.id ?? item.foodId ?? name + "-" + index),
+            name: name,
+            price: Number.isFinite(price) && price >= 0 ? price : 0,
+            quantity: quantity,
+            image: item.image || item.img || item.imageUrl || "images/food-placeholder.jpg",
+            category: item.category || item.description || item.restaurant || "Freshly prepared",
+            restaurant: item.restaurant || item.restaurantName || "",
+        };
+    });
+
+    function saveCart() {
+        try {
+            localStorage.setItem("zwinkitCart", JSON.stringify(cart));
+            // Keep the source key updated as well when it was an existing cart key.
+            if (cartData.key !== "zwinkitCart") {
+                localStorage.setItem(cartData.key, JSON.stringify(cart));
+            }
+        } catch (error) {
+            console.warn("Cart could not be saved.", error);
+        }
+    }
+
+    function money(value) {
+        return "₹" + Math.round(value);
+    }
+
+    function getBestOffer(subtotal) {
+        const deliveryFee = cart.length ? 20 : 0;
+        const eligible = [];
+
+        if (subtotal >= 500) {
+            eligible.push({ code: "flat150", label: "Flat ₹150 OFF", discount: 150, delivery: deliveryFee });
+        }
+        if (subtotal >= 300) {
+            eligible.push({ code: "freeDelivery", label: "Free Delivery", discount: 0, delivery: 0 });
+        }
+
+        // The 30% offer applies to items from the selected restaurants.
+        const selectedRestaurants = ["salsa spice & grill", "friend's dhaba", "under the mango tree"];
+        const eligibleItemsTotal = cart.reduce(function (sum, item) {
+            return selectedRestaurants.includes(item.restaurant.trim().toLowerCase())
+                ? sum + item.price * item.quantity : sum;
+        }, 0);
+        if (eligibleItemsTotal > 0) {
+            eligible.push({
+                code: "percent30",
+                label: "30% OFF selected restaurants",
+                discount: Math.round(eligibleItemsTotal * 0.30),
+                delivery: deliveryFee
+            });
+        }
+
+        if (!eligible.length) return { code: "", label: "No offer available", discount: 0, delivery: deliveryFee };
+
+      
+        eligible.sort(function (a, b) {
+            return (b.discount + (deliveryFee - b.delivery)) - (a.discount + (deliveryFee - a.delivery));
+        });
+        return eligible[0];
+    }
+
+    function renderCart() {
+        cartItemsBox.innerHTML = "";
+        let itemTotal = 0;
+        let itemCount = 0;
+
+        cart.forEach(function (item) {
+            itemTotal += item.price * item.quantity;
+            itemCount += item.quantity;
+
+            const card = document.createElement("div");
+            card.className = "cart-item";
+
+            const left = document.createElement("div");
+            left.className = "cart-left";
+
+            const image = document.createElement("img");
+            image.src = item.image;
+            image.alt = item.name;
+            image.onerror = function () {
+                this.onerror = null;
+                this.style.display = "none";
+            };
+
+            const details = document.createElement("div");
+            const heading = document.createElement("h3");
+            heading.textContent = item.name;
+            const category = document.createElement("p");
+            category.textContent = item.category;
+            const price = document.createElement("p");
+            price.className = "price";
+            price.textContent = money(item.price) + " each";
+            details.append(heading, category, price);
+            left.append(image, details);
+
+            const controls = document.createElement("div");
+            controls.className = "qty";
+
+            const minus = document.createElement("a");
+            minus.href = "#";
+            minus.textContent = "−";
+            minus.setAttribute("aria-label", "Decrease " + item.name);
+            const quantity = document.createElement("span");
+            quantity.textContent = item.quantity;
+            const plus = document.createElement("a");
+            plus.href = "#";
+            plus.textContent = "+";
+            plus.setAttribute("aria-label", "Increase " + item.name);
+            const remove = document.createElement("button");
+            remove.type = "button";
+            remove.textContent = "Remove";
+            remove.style.cssText = "background:none;border:none;color:#70400f;cursor:pointer;margin-left:8px;";
+
+            minus.addEventListener("click", function (event) {
+                event.preventDefault();
+                item.quantity -= 1;
+                if (item.quantity <= 0) cart = cart.filter(function (entry) { return entry.id !== item.id; });
+                saveCart();
+                renderCart();
+            });
+            plus.addEventListener("click", function (event) {
+                event.preventDefault();
+                item.quantity += 1;
+                saveCart();
+                renderCart();
+            });
+            remove.addEventListener("click", function () {
+                cart = cart.filter(function (entry) { return entry.id !== item.id; });
+                saveCart();
+                renderCart();
+            });
+
+            controls.append(minus, quantity, plus, remove);
+            card.append(left, controls);
+            cartItemsBox.appendChild(card);
+        });
+
+        if (cart.length === 0) {
+            const empty = document.createElement("p");
+            empty.className = "empty-cart-message";
+            empty.textContent = "Your cart is empty. Add items from the restaurant menu.";
+            empty.style.cssText = "padding:20px 0;color:#777;";
+            cartItemsBox.appendChild(empty);
+        }
+
+        const offer = getBestOffer(itemTotal);
+        const delivery = cart.length ? offer.delivery : 0;
+        const discount = cart.length ? offer.discount : 0;
+        const total = Math.max(0, itemTotal + delivery - discount);
+
+        itemsCount.textContent = itemCount + (itemCount === 1 ? " item" : " items");
+        summaryRows[0].querySelectorAll("span")[1].textContent = money(itemTotal);
+        summaryRows[1].querySelectorAll("span")[1].textContent = money(delivery);
+        summaryRows[2].querySelectorAll("span")[1].textContent = "-" + money(discount);
+        summaryRows[3].querySelectorAll("span")[1].textContent = money(total);
+
+        let offerNote = document.querySelector(".offer-applied-note");
+        if (!offerNote) {
+            offerNote = document.createElement("p");
+            offerNote.className = "offer-applied-note";
+            offerNote.style.cssText = "font-size:12px;color:#387342;margin-top:12px;line-height:1.5;";
+            summaryRows[2].insertAdjacentElement("afterend", offerNote);
+        }
+        offerNote.textContent = cart.length
+            ? (offer.discount || offer.code === "freeDelivery"
+                ? "Applied: " + offer.label
+                : "No eligible offer. Offers: ₹150 off above ₹499, free delivery above ₹299, or 30% off selected restaurants.")
+            : "Add items to check available offers.";
+
+        try {
+            localStorage.removeItem("zwinkitSelectedOffer");
+        } catch (error) {}
+    }
+
+    checkoutButton.addEventListener("click", function (event) {
+        if (cart.length === 0) {
+            event.preventDefault();
+            alert("Your cart is empty!");
+        }
+    });
+
+    renderCart();
+})();
+</script>
+
+</body>
+
+</html>
