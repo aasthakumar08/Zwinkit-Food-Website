@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Zwinkit</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding-top: 80px;
+    font-family: "Bricolage Grotesque", sans-serif;
+    background: #fffaf0;
+    color: #3b2414;
+}
+
+header {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    background-color: rgb(72, 41, 3);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    font-family: serif;
+}
+
+.logo {
+    font-size: 38px;
+    font-weight: bold;
+    color: #e6c89c;
+}
+
+.logo span {
+    color: #e6c89c;
+}
+
+.z {
+    display: inline-block;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+    font-size: 30px;
+    color: #e6c89c;
+    cursor: pointer;
+    user-select: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: burlywood;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: rgb(233, 165, 75);
+}
+
+.page {
+    width: 92%;
+    max-width: 1050px;
+    margin: 55px auto 65px;
+}
+
+.login-container {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    background: white;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 15px 45px rgba(72, 41, 3, 0.15);
+    min-height: 560px;
+}
+
+.login-left {
+    background: #482903;
+    color: white;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.welcome-tag {
+    display: inline-block;
+    width: fit-content;
+    background: #e6c89c;
+    color: #482903;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.login-left h1 {
+    font-size: 43px;
+    line-height: 1.1;
+    margin-bottom: 18px;
+}
+
+.login-left h1 span {
+    color: #e6c89c;
+}
+
+.login-left > p {
+    color: #ead9c0;
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 380px;
+    margin-bottom: 30px;
+}
+
+.food-box {
+    background: #ffecd7;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 350px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.food-icon {
+    width: 75px;
+    height: 75px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    flex-shrink: 0;
+}
+
+.food-text h3 {
+    color: #482903;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.food-text p {
+    color: #6d5138;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.benefit {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-size: 13px;
+    color: #f5e9d8;
+}
+
+.benefit-icon {
+    width: 29px;
+    height: 29px;
+    border-radius: 50%;
+    background: #e6c89c;
+    color: #482903;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.login-right {
+    padding: 55px 65px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-heading {
+    margin-bottom: 30px;
+}
+
+.form-heading h2 {
+    font-size: 32px;
+    color: #301b0d;
+    margin-bottom: 8px;
+}
+
+.form-heading p {
+    color: #777;
+    font-size: 14px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 20px;
+}
+
+.field label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #4a2c1a;
+}
+
+.input-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fffaf5;
+    transition: 0.3s;
+}
+
+.input-box:focus-within {
+    border-color: #70400f;
+    box-shadow: 0 0 0 3px rgba(112, 64, 15, 0.1);
+    background: white;
+}
+
+.input-icon {
+    padding-left: 14px;
+    font-size: 16px;
+}
+
+.input-box input {
+    width: 100%;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 13px 14px 13px 10px;
+    font-size: 14px;
+    color: #3b2414;
+    font-family: inherit;
+}
+
+.input-box input::placeholder {
+    color: #999;
+}
+
+.form-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 5px 0 22px;
+    font-size: 12px;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #666;
+}
+
+.remember input {
+    accent-color: #70400f;
+}
+
+.forgot {
+    color: #70400f;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.forgot:hover {
+    text-decoration: underline;
+}
+
+.login-submit {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #70400f;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: inherit;
+    transition: 0.3s;
+}
+
+.login-submit:hover {
+    background: #482903;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(72, 41, 3, 0.2);
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 25px 0;
+    color: #aaa;
+    font-size: 12px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    height: 1px;
+    background: #ddd;
+    flex: 1;
+}
+
+.signup-text {
+    text-align: center;
+    color: #777;
+    font-size: 13px;
+}
+
+.signup-text a {
+    color: #70400f;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.signup-text a:hover {
+    text-decoration: underline;
+}
+
+.quick-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 28px;
+}
+
+.info-box {
+    background: #f7ecdd;
+    border-radius: 11px;
+    padding: 12px 7px;
+    text-align: center;
+}
+
+.info-box strong {
+    display: block;
+    color: #482903;
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.info-box span {
+    color: #777;
+    font-size: 10px;
+}
+
+.footer {
+    background-color: #2b1d12;
+    color: #fffaf3;
+    margin-top: 30px;
+    padding: 45px 60px 20px;
+}
+
+.footer-main {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    max-width: 1300px;
+    margin: auto;
+}
+
+.footer-brand {
+    width: 22%;
+}
+
+.footer-brand h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.footer-brand h2 span {
+    color: #e6c89c;
+}
+
+.footer-brand p {
+    color: #d8c7b5;
+    margin-bottom: 25px;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-links a {
+    width: 35px;
+    height: 35px;
+    border: 1px solid #9d8975;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-column h3 {
+    color: #e6c89c;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.footer-column a {
+    color: #d8c7b5;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-column a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #5b4939;
+    margin-top: 35px;
+    padding-top: 18px;
+    color: #bba999;
+    font-size: 13px;
+}
+
+@media (max-width: 850px) {
+    header {
+        padding: 0 20px;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .login-container {
+        grid-template-columns: 1fr;
+    }
+
+    .login-left {
+        padding: 40px;
+    }
+
+    .login-right {
+        padding: 40px;
+    }
+
+    .food-box {
+        max-width: 100%;
+    }
+
+    .footer-main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-brand {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 0 20px;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: #482903;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        padding: 10px 0;
+        box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+    }
+
+    #menu-toggle:checked ~ nav {
+        display: flex;
+    }
+
+    nav a {
+        width: 100%;
+        text-align: center;
+        padding: 14px 0;
+        font-size: 15px;
+    }
+
+    nav a:hover {
+        background: rgba(255,255,255,0.08);
+    }
+
+    .page {
+        width: 94%;
+        margin-top: 25px;
+    }
+
+    .login-left {
+        padding: 32px 25px;
+    }
+
+    .login-left h1 {
+        font-size: 34px;
+    }
+
+    .login-right {
+        padding: 32px 25px;
+    }
+
+    .form-heading h2 {
+        font-size: 28px;
+    }
+
+    .quick-info {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+    }
+
+    .footer {
+        padding: 30px 25px 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <span class="z">Z</span>winkit
+    </div>
+
+    <input type="checkbox" id="menu-toggle">
+
+    <label for="menu-toggle" class="hamburger">☰</label>
+
+    <nav>
+        <a href="Home.html">Home</a>
+        <a href="Restaurant.html">Restaurant</a>
+        <a href="offers.html">Offers</a>
+        <a href="About.html">About Us</a>
+        <a href="Cart.html">Cart</a>
+        <a href="Login.html">Login/Sign Up</a>
+    </nav>
+</header>
+
+<main class="page">
+
+    <div class="login-container">
+
+        <section class="login-left">
+
+            <div class="welcome-tag">
+                🍴 WELCOME BACK TO ZWINKIT
+            </div>
+
+            <h1>
+                Good food is<br>
+                just a <span>login</span><br>
+                away.
+            </h1>
+
+            <p>
+                Sign in to continue your food journey and
+                discover delicious meals, exciting offers
+                and your favourite restaurants.
+            </p>
+
+            <div class="food-box">
+                <div class="food-icon">🍕</div>
+
+                <div class="food-text">
+                    <h3>Your cravings are waiting!</h3>
+                    <p>
+                        Order your favourite food
+                        quickly and easily.
+                    </p>
+                </div>
+            </div>
+
+            <div class="benefits">
+                <div class="benefit">
+                    <div class="benefit-icon">⚡</div>
+                    <span>Quick and easy ordering</span>
+                </div>
+
+                <div class="benefit">
+                    <div class="benefit-icon">🎁</div>
+                    <span>Exclusive food offers</span>
+                </div>
+
+                <div class="benefit">
+                    <div class="benefit-icon">❤️</div>
+                    <span>Save your favourite meals</span>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="login-right">
+
+            <div class="form-heading">
+                <h2>Welcome Back!</h2>
+                <p>Login to your Zwinkit account.</p>
+            </div>
+
+            <form id="loginForm" novalidate>
+
+                <div class="field">
+                    <label for="loginUsername">
+                        Username or Email
+                    </label>
+
+                    <div class="input-box">
+                        <span class="input-icon">✉️</span>
+
+                        <input
+                            type="text"
+                            id="loginUsername"
+                            name="username"
+                            placeholder="Enter username or email"
+                        >
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="loginPassword">
+                        Password
+                    </label>
+
+                    <div class="input-box">
+                        <span class="input-icon">🔒</span>
+
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            name="password"
+                            placeholder="Enter your password"
+                        >
+                    </div>
+                </div>
+
+                <div class="form-options">
+
+                    <label class="remember">
+                        <input type="checkbox" name="remember">
+                        Remember me
+                    </label>
+
+                    <a href="ForgotPassword.html" class="forgot">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+                <button type="submit" class="login-submit">
+                    Login to Zwinkit →
+                </button>
+
+            </form>
+
+            <div class="divider">OR</div>
+
+            <p class="signup-text">
+                Don't have an account?
+                <a href="Signup.html">Create one</a>
+            </p>
+
+            <div class="quick-info">
+                <div class="info-box">
+                    <strong>10K+</strong>
+                    <span>Happy Users</span>
+                </div>
+
+                <div class="info-box">
+                    <strong>100+</strong>
+                    <span>Food Choices</span>
+                </div>
+
+                <div class="info-box">
+                    <strong>24/7</strong>
+                    <span>Cravings Served</span>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+<footer class="footer">
+
+    <div class="footer-main">
+
+        <div class="footer-brand">
+            <h2>Zwinkit</h2>
+
+            <p>Good food. Great mood.</p>
+
+            <div class="social-links">
+                <a href="#">f</a>
+                <a href="#">◎</a>
+                <a href="#">𝕏</a>
+                <a href="#">▶</a>
+            </div>
+        </div>
+
+        <div class="footer-column">
+            <h3>Company</h3>
+            <a href="Home.html">Home</a>
+            <a href="Restaurant.html">Restaurant</a>
+            <a href="offers.html">Offers</a>
+            <a href="About.html">About Us</a>
+        </div>
+
+        <div class="footer-column">
+            <h3>Help & Support</h3>
+            <a href="#">Help Center</a>
+            <a href="#">FAQs</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Refund Policy</a>
+        </div>
+
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <a href="#">+91 98765 43210</a>
+            <a href="#">support@zwinkit.com</a>
+            <a href="#">Ludhiana, Punjab</a>
+            <a href="#">India</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 Zwinkit. All rights reserved.
+    </div>
+
+</footer>
+
+<script>
+let loginForm = document.getElementById("loginForm");
+
+loginForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    let loginUsername = document.getElementById("loginUsername").value.trim().toLowerCase();
+    let loginPassword = document.getElementById("loginPassword").value;
+
+    if (loginUsername === "" || loginPassword === "") {
+        alert("Please enter username/email and password.");
+        return;
+    }
+
+    let users = JSON.parse(localStorage.getItem("zwinkitUsers")) || [];
+
+    let matchedUser = users.find(function(user) {
+        return (
+            (
+                user.username.toLowerCase() === loginUsername ||
+                user.email.toLowerCase() === loginUsername
+            ) &&
+            user.password === loginPassword
+        );
+    });
+
+    if (matchedUser) {
+        localStorage.setItem("loggedInUser", matchedUser.username);
+
+        alert("Login successful! Welcome to Zwinkit.");
+
+        window.location.href = "Home.html";
+    } else {
+        alert("Invalid username/email or password.");
+    }
+});
+</script>
+
+</body>
+</html>
