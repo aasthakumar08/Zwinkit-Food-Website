@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout - Zwinkit</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fffaf0;
+            color: #482903;
+        }
+
+        header {
+            background-color: #482903;
+            color: burlywood;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h2 {
+            color: #e6c89c;
+        }
+
+        header a {
+            color: burlywood;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .box {
+            background-color: white;
+            border: 1px solid #ead8bf;
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-top: 13px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input:not([type="radio"]),
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d8c2a4;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        textarea {
+            font-family: Arial, sans-serif;
+            resize: vertical;
+        }
+
+        .payment {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .payment input {
+            cursor: pointer;
+        }
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0;
+            gap: 10px;
+        }
+
+        .item span {
+            overflow-wrap: anywhere;
+        }
+
+        .item strong {
+            white-space: nowrap;
+        }
+
+        .cart-item {
+            padding-bottom: 12px;
+            border-bottom: 1px solid #f0e4d3;
+        }
+
+        .item-details {
+            font-size: 14px;
+            color: #795b3b;
+            margin-top: 5px;
+        }
+
+        .total {
+            border-top: 1px solid #d8c2a4;
+            padding-top: 15px;
+            margin-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            background-color: #70400f;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #482903;
+        }
+
+        button:disabled {
+            background-color: #999;
+            cursor: not-allowed;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 18px;
+            color: #70400f;
+            text-decoration: none;
+        }
+
+        .empty-cart {
+            padding: 15px 0;
+            line-height: 1.6;
+        }
+
+        .offer-note {
+            font-size: 13px;
+            color: #39713b;
+            margin-top: 10px;
+        }
+
+        footer {
+            background-color: #482903;
+            color: burlywood;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 750px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <header>
+        <h2>Zwinkit</h2>
+        <a href="Cart.html">Back to Cart</a>
+    </header>
+
+
+    <div class="container">
+
+        <h1>Checkout</h1>
+
+        <p>Complete your details to place your order.</p>
+
+
+        <form id="checkoutForm">
+
+            <div class="layout">
+
+
+                <div>
+
+
+                    <div class="box">
+
+                        <h3>Delivery Address</h3>
+
+                        <label for="name">Full Name</label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+
+                        <label for="mobile">Mobile Number</label>
+
+                        <input
+                            type="text"
+                            id="mobile"
+                            placeholder="Enter 10 digit mobile number"
+                            maxlength="10"
+                            inputmode="numeric"
+                            pattern="[0-9]{10}"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                            required
+                        >
+
+
+                        <label for="address">Full Address</label>
+
+                        <textarea
+                            id="address"
+                            rows="3"
+                            placeholder="House number, street"
+                            required
+                        ></textarea>
+
+
+                        <label for="city">City</label>
+
+                        <input
+                            type="text"
+                            id="city"
+                            placeholder="Enter your city"
+                            required
+                        >
+
+
+                        <label for="pincode">Pincode</label>
+
+                        <input
+                            type="text"
+                            id="pincode"
+                            placeholder="Enter 6 digit pincode"
+                            maxlength="6"
+                            inputmode="numeric"
+                            pattern="[0-9]{6}"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <div class="box">
+
+                        <h3>Payment Method</h3>
+
+                        <label class="payment">
+
+                            <input
+                                type="radio"
+                                name="payment"
+                                value="Cash on Delivery"
+                                checked
+                            >
+
+                            Cash on Delivery
+
+                        </label>
+
+
+                        <label class="payment">
+
+                            <input
+                                type="radio"
+                                name="payment"
+                                value="UPI"
+                            >
+
+                            UPI (Demo)
+
+                        </label>
+
+
+                        <label class="payment">
+
+                            <input
+                                type="radio"
+                                name="payment"
+                                value="Card"
+                            >
+
+                            Credit/Debit Card (Demo)
+
+                        </label>
+
+                        <p>
+                            UPI and Card are demo options only.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="box">
+
+                    <h3>Order Summary</h3>
+
+                    <!-- Cart items will appear here -->
+
+                    <div id="checkoutItems"></div>
+
+
+                    <div class="item">
+                        <span>Item Total</span>
+                        <strong id="itemTotal">₹0</strong>
+                    </div>
+
+
+                    <div class="item">
+                        <span>Delivery Fee</span>
+                        <strong id="deliveryFee">₹0</strong>
+                    </div>
+
+
+                    <div class="item">
+                        <span>Discount</span>
+                        <strong id="discount">-₹0</strong>
+                    </div>
+
+
+                    <p id="offerNote" class="offer-note"></p>
+
+
+                    <div class="item total">
+                        <span>Total</span>
+                        <strong id="total">₹0</strong>
+                    </div>
+
+
+                    <button type="submit" id="placeOrderBtn">
+                        Place Order
+                    </button>
+
+
+                    <a href="Cart.html" class="back">
+                        ← Back to Cart
+                    </a>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <footer>
+        <p>© 2026 Zwinkit. All rights reserved.</p>
+    </footer>
+<script>
+   
+    function getCartItems() {
+        let cart = [];
+
+        try {
+            const savedCart =
+                localStorage.getItem("zwinkitCart") ||
+                localStorage.getItem("cartItems") ||
+                localStorage.getItem("cart") ||
+                "[]";
+
+            cart = JSON.parse(savedCart);
+
+            if (!Array.isArray(cart) && cart && Array.isArray(cart.items)) {
+                cart = cart.items;
+            }
+
+            if (!Array.isArray(cart)) {
+                cart = [];
+            }
+        } catch (error) {
+            console.error("Error reading cart:", error);
+            cart = [];
+        }
+
+        return cart.map(function(item, index) {
+            return {
+                id: item.id || item.foodId || String(index),
+                name: item.name || item.title || item.foodName ||
+                      item.productName || "Food Item",
+
+                price: Number(
+                    item.price ?? item.itemPrice ?? item.amount ?? 0
+                ),
+
+                quantity: Math.max(
+                    1,
+                    Number(item.quantity ?? item.qty ?? 1) || 1
+                ),
+
+                restaurant: item.restaurant ||
+                            item.restaurantName || "",
+
+                image: item.image || item.img ||
+                       item.imageUrl || "",
+
+                category: item.category ||
+                          item.description || ""
+            };
+        }).filter(function(item) {
+            return Number.isFinite(item.price) && item.price >= 0;
+        });
+    }
+
+
+    function calculateBill(cart) {
+        let itemTotal = 0;
+
+        cart.forEach(function(item) {
+            itemTotal += item.price * item.quantity;
+        });
+
+        let deliveryFee = cart.length > 0 ? 20 : 0;
+        let discount = 0;
+        let offer = "";
+
+        // Flat ₹150 OFF on ₹500 or more
+        if (itemTotal >= 500) {
+            discount = 150;
+            offer = "Flat ₹150 OFF";
+        }
+
+        if (itemTotal >= 300 && deliveryFee > discount) {
+            discount = 0;
+            deliveryFee = 0;
+            offer = "Free Delivery";
+        }
+
+        // 30% OFF on selected restaurants
+        const selectedRestaurants = [
+            "salsa spice & grill",
+            "friend's dhaba",
+            "under the mango tree"
+        ];
+
+        let eligibleItemsTotal = 0;
+
+        cart.forEach(function(item) {
+            const restaurantName =
+                String(item.restaurant).trim().toLowerCase();
+
+            if (selectedRestaurants.includes(restaurantName)) {
+                eligibleItemsTotal += item.price * item.quantity;
+            }
+        });
+
+        const restaurantDiscount =
+            Math.round(eligibleItemsTotal * 0.30);
+
+        if (restaurantDiscount > discount) {
+            discount = restaurantDiscount;
+            deliveryFee = cart.length > 0 ? 20 : 0;
+            offer = "30% OFF selected restaurants";
+        }
+
+        const total = Math.max(
+            0,
+            itemTotal + deliveryFee - discount
+        );
+
+        return {
+            itemTotal: itemTotal,
+            deliveryFee: deliveryFee,
+            discount: discount,
+            total: total,
+            offer: offer
+        };
+    }
+
+    function formatPrice(amount) {
+        return "₹" + Math.round(amount).toLocaleString("en-IN");
+    }
+
+
+    function escapeHTML(value) {
+        return String(value).replace(/[&<>"']/g, function(character) {
+            const entities = {
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#039;"
+            };
+
+            return entities[character];
+        });
+    }
+
+    function showSummary() {
+        const cart = getCartItems();
+
+        const checkoutItems =
+            document.getElementById("checkoutItems");
+
+        const itemTotalElement =
+            document.getElementById("itemTotal");
+
+        const deliveryFeeElement =
+            document.getElementById("deliveryFee");
+
+        const discountElement =
+            document.getElementById("discount");
+
+        const totalElement =
+            document.getElementById("total");
+
+        const offerNote =
+            document.getElementById("offerNote");
+
+        const placeOrderBtn =
+            document.getElementById("placeOrderBtn");
+
+        if (
+            !checkoutItems ||
+            !itemTotalElement ||
+            !deliveryFeeElement ||
+            !discountElement ||
+            !totalElement
+        ) {
+            console.error(
+                "Checkout summary IDs are missing. Check your HTML."
+            );
+            return;
+        }
+
+        if (cart.length === 0) {
+            checkoutItems.innerHTML =
+                "<p>Your cart is empty. Please add items first.</p>";
+
+            itemTotalElement.textContent = formatPrice(0);
+            deliveryFeeElement.textContent = formatPrice(0);
+            discountElement.textContent = "-" + formatPrice(0);
+            totalElement.textContent = formatPrice(0);
+
+            if (offerNote) {
+                offerNote.textContent = "";
+            }
+
+            if (placeOrderBtn) {
+                placeOrderBtn.disabled = true;
+            }
+
+            return;
+        }
+
+        const bill = calculateBill(cart);
+
+        // DISPLAY EACH ITEM
+        checkoutItems.innerHTML = cart.map(function(item) {
+            const lineTotal = item.price * item.quantity;
+
+            return `
+                <div class="checkout-item">
+                    <div class="checkout-item-details">
+                        <span class="checkout-item-name">
+                            ${escapeHTML(item.name)} × ${item.quantity}
+                        </span>
+                    </div>
+
+                    <span class="checkout-item-price">
+                        ${formatPrice(lineTotal)}
+                    </span>
+                </div>
+            `;
+        }).join("");
+        itemTotalElement.textContent =
+            formatPrice(bill.itemTotal);
+
+        deliveryFeeElement.textContent =
+            formatPrice(bill.deliveryFee);
+
+        discountElement.textContent =
+            "-" + formatPrice(bill.discount);
+
+        totalElement.textContent =
+            formatPrice(bill.total);
+
+        if (offerNote) {
+            offerNote.textContent = bill.offer
+                ? "Applied: " + bill.offer
+                : "No offer applied.";
+        }
+
+        if (placeOrderBtn) {
+            placeOrderBtn.disabled = false;
+        }
+    }
+
+    window.addEventListener("storage", function(event) {
+        if (
+            event.key === "zwinkitCart" ||
+            event.key === "cartItems" ||
+            event.key === "cart"
+        ) {
+            showSummary();
+        }
+    });
+
+
+    window.addEventListener("pageshow", function() {
+        showSummary();
+    });
+
+
+    const checkoutForm =
+        document.getElementById("checkoutForm");
+
+    if (checkoutForm) {
+        checkoutForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const cart = getCartItems();
+
+            if (cart.length === 0) {
+                alert("Your cart is empty! Please add items first.");
+                showSummary();
+                return;
+            }
+
+            const customerName =
+                document.getElementById("name").value.trim();
+
+            const customerMobile =
+                document.getElementById("mobile").value.trim();
+
+            const customerAddress =
+                document.getElementById("address").value.trim();
+
+            const customerCity =
+                document.getElementById("city").value.trim();
+
+            const customerPincode =
+                document.getElementById("pincode").value.trim();
+
+            const paymentElement =
+                document.querySelector('input[name="payment"]:checked');
+
+            if (
+                !customerName ||
+                !customerMobile ||
+                !customerAddress ||
+                !customerCity ||
+                !customerPincode ||
+                !paymentElement
+            ) {
+                alert(
+                    "Please fill in all details and select a payment method."
+                );
+                return;
+            }
+
+            const bill = calculateBill(cart);
+
+            localStorage.setItem("customerName", customerName);
+            localStorage.setItem("customerMobile", customerMobile);
+
+            localStorage.setItem(
+                "customerAddress",
+                customerAddress + ", " +
+                customerCity + " - " + customerPincode
+            );
+
+            localStorage.setItem(
+                "paymentMethod",
+                paymentElement.value
+            );
+
+            localStorage.setItem(
+                "orderItems",
+                JSON.stringify(cart)
+            );
+
+            localStorage.setItem(
+                "orderItemTotal",
+                String(bill.itemTotal)
+            );
+
+            localStorage.setItem(
+                "orderDeliveryFee",
+                String(bill.deliveryFee)
+            );
+
+            localStorage.setItem(
+                "orderDiscount",
+                String(bill.discount)
+            );
+
+            localStorage.setItem(
+                "orderTotal",
+                String(bill.total)
+            );
+
+            localStorage.setItem(
+                "orderOffer",
+                bill.offer
+            );
+            localStorage.setItem("zwinkitCart", "[]");
+            localStorage.setItem("cartItems", "[]");
+            localStorage.setItem("cart", "[]");
+            
+            window.location.href = "order.html";
+        });
+    }
+
+
+    showSummary();
+</script>
+</body>
+
+</html>

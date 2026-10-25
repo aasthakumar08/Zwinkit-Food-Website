@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>About Us - Zwinkit</title>
+
+
+<!-- SAME GOOGLE FONTS AS HOME PAGE -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Montenegrin+Gothic+One&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Tangerine:wght@400;700&family=Yuyu&display=swap" rel="stylesheet">
+
+
+<style>
+
+   
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+
+
+    body {
+        padding-top: 80px;
+        background-color: #fffaf0;
+        color: #3b2414;
+    }
+
+
+    header {
+
+        height: 80px;
+
+        width: 100%;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        padding: 0 40px;
+
+        background-color: rgb(72, 41, 3);
+
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+        position: fixed;
+
+        top: 0;
+
+        left: 0;
+
+        z-index: 1000;
+
+    }
+
+
+
+    .logo {
+
+        font-size: 38px;
+
+        font-weight: bold;
+
+        color: #e6c89c;
+
+    }
+
+
+    .z {
+
+        display: inline-block;
+
+    }
+
+
+
+
+    nav {
+
+        display: flex;
+
+        gap: 20px;
+
+        align-items: center;
+
+    }
+
+
+    #menu-toggle {
+
+        display: none;
+
+    }
+
+
+    .hamburger {
+
+        display: none;
+
+        font-size: 30px;
+
+        color: #e6c89c;
+
+        cursor: pointer;
+
+        user-select: none;
+
+    }
+
+
+    nav a {
+
+        text-decoration: none;
+
+        color: burlywood;
+
+        font-size: 17px;
+
+        font-weight: 500;
+
+    }
+
+
+    nav a:hover {
+
+        color: rgb(233, 165, 75);
+
+    }
+
+
+    /* About Us active link */
+
+    nav a.active {
+
+        color: #ffffff;
+
+    }
+
+
+
+
+
+    .about-hero {
+
+        margin: 30px 35px;
+
+        min-height: 330px;
+
+        background-color: #ffecd7;
+
+        border-radius: 25px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        padding: 45px 55px;
+
+        overflow: hidden;
+
+        box-shadow: 0px 5px 25px rgba(0,0,0,0.12);
+
+    }
+
+
+    .hero-text {
+
+        width: 55%;
+
+    }
+
+
+    .hero-small {
+
+        color: #9a5b00;
+
+        font-size: 25px;
+
+        font-weight: bold;
+
+        margin-bottom: 8px;
+
+    }
+
+
+    .hero-text h1 {
+
+        color: #3b2414;
+
+        font-size: 62px;
+
+        font-weight: 800;
+
+        line-height: 1;
+
+        margin-bottom: 18px;
+
+    }
+
+
+    .hero-text h1 span {
+
+        color: #9a5b00;
+
+    }
+
+
+    .hero-text p {
+
+        color: #5a3a24;
+
+        font-size: 17px;
+
+        line-height: 1.6;
+
+        max-width: 580px;
+
+    }
+
+
+    .hero-image {
+
+        width: 38%;
+
+        height: 260px;
+
+        border-radius: 20px;
+
+        object-fit: cover;
+
+    }
+
+
+
+
+    .why-section {
+
+        margin: 25px 35px;
+
+        padding: 35px;
+
+        background-color: #e8f1e3;
+
+        border-radius: 25px;
+
+    }
+
+
+    .section-title {
+
+        text-align: center;
+
+        font-size: 35px;
+
+        font-weight: bold;
+
+        margin-bottom: 30px;
+
+        color: #3b2414;
+
+    }
+
+
+    .section-title span {
+
+        color: #9a5b00;
+
+    }
+
+
+    .why-container {
+
+        display: flex;
+
+        justify-content: space-between;
+
+        gap: 25px;
+
+    }
+
+
+    .why-card {
+
+        flex: 1;
+
+        background-color: white;
+
+        border-radius: 18px;
+
+        padding: 25px;
+
+        text-align: center;
+
+        box-shadow: 0px 4px 15px rgba(0,0,0,0.08);
+
+        transition: 0.3s ease;
+
+    }
+
+
+    .why-card:hover {
+
+        transform: translateY(-8px);
+
+        box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+
+    }
+
+
+    .why-icon {
+
+        font-size: 42px;
+
+        margin-bottom: 12px;
+
+    }
+
+
+    .why-card h3 {
+
+        font-size: 22px;
+
+        margin-bottom: 10px;
+
+        color: #4a2c1a;
+
+    }
+
+
+    .why-card p {
+
+        color: #5a3a24;
+
+        font-size: 14px;
+
+        line-height: 1.5;
+
+    }
+
+
+
+
+    .values-section {
+
+        margin: 25px 35px;
+
+        padding: 35px;
+
+        background-color: #f5e9d8;
+
+        border-radius: 25px;
+
+    }
+
+
+    .values-container {
+
+        display: flex;
+
+        gap: 25px;
+
+        justify-content: space-between;
+
+    }
+
+
+    .value-card {
+
+        flex: 1;
+
+        padding: 25px;
+
+        background-color: #ffffff;
+
+        border-radius: 18px;
+
+        box-shadow: 0px 4px 15px rgba(0,0,0,0.08);
+
+        transition: 0.3s ease;
+
+    }
+
+
+    .value-card:hover {
+
+        transform: translateY(-7px);
+
+        box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+
+    }
+
+
+    .value-card h3 {
+
+        font-size: 22px;
+
+        color: #70460c;
+
+        margin-bottom: 10px;
+
+    }
+
+
+    .value-card p {
+
+        font-size: 14px;
+
+        line-height: 1.6;
+
+        color: #5a3a24;
+
+    }
+
+
+    .message-section {
+
+        margin: 25px 35px;
+
+        padding: 35px;
+
+        background-color: #ddd2c1;
+
+        border-radius: 25px;
+
+        box-shadow: 0 5px 25px rgba(0,0,0,0.10);
+
+    }
+
+
+    .message-container {
+
+        display: flex;
+
+        gap: 40px;
+
+        align-items: stretch;
+
+    }
+
+
+
+  
+
+    .message-info {
+
+        width: 45%;
+
+        background-color: #362c48;
+
+        color: white;
+
+        border-radius: 20px;
+
+        padding: 35px;
+
+    }
+
+
+    .message-info h2 {
+
+        font-size: 32px;
+
+        margin-bottom: 15px;
+
+    }
+
+
+    .message-info p {
+
+        color: #eee;
+
+        font-size: 15px;
+
+        line-height: 1.6;
+
+        margin-bottom: 20px;
+
+    }
+
+
+    .contact-item {
+
+        margin: 15px 0;
+
+        font-size: 15px;
+
+    }
+
+
+
+    /* RIGHT FORM */
+
+    .message-form {
+
+        width: 55%;
+
+        background-color: white;
+
+        border-radius: 20px;
+
+        padding: 30px;
+
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+
+    }
+
+
+    .message-form h2 {
+
+        font-size: 28px;
+
+        color: #4a2c1a;
+
+        margin-bottom: 20px;
+
+    }
+
+
+    .form-group {
+
+        margin-bottom: 15px;
+
+    }
+
+
+    .form-group label {
+
+        display: block;
+
+        font-size: 14px;
+
+        font-weight: 600;
+
+        margin-bottom: 6px;
+
+        color: #4a2c1a;
+
+    }
+
+
+    .form-group input,
+    .form-group textarea {
+
+        width: 100%;
+
+        padding: 12px;
+
+        border: 1px solid #ddd;
+
+        border-radius: 9px;
+
+        outline: none;
+
+        font-size: 14px;
+
+    }
+
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+
+        border-color: #9a5b00;
+
+    }
+
+
+    .form-group textarea {
+
+        height: 100px;
+
+        resize: none;
+
+    }
+
+
+    .send-btn {
+
+        border: none;
+
+        background-color: #70400f;
+
+        color: white;
+
+        padding: 11px 25px;
+
+        border-radius: 9px;
+
+        font-size: 14px;
+
+        font-weight: bold;
+
+        cursor: pointer;
+
+        transition: 0.2s;
+
+    }
+
+
+    .send-btn:hover {
+
+        background-color: #482903;
+
+    }
+
+
+    .footer {
+
+        background-color: #2b1d12;
+
+        color: #fffaf3;
+
+        margin-top: 30px;
+
+        padding: 45px 60px 20px;
+
+        border-radius: 3px 3px 0 0;
+
+    }
+
+
+    .footer-main {
+
+        display: flex;
+
+        justify-content: space-between;
+
+        gap: 50px;
+
+        max-width: 1300px;
+
+        margin: auto;
+
+    }
+
+
+    .footer-brand {
+
+        width: 22%;
+
+    }
+
+
+    .footer-brand h2 {
+
+        font-size: 30px;
+
+        margin-bottom: 10px;
+
+    }
+
+
+    .footer-brand p {
+
+        color: #d8c7b5;
+
+        margin-bottom: 25px;
+
+    }
+
+
+    .social-links {
+
+        display: flex;
+
+        gap: 12px;
+
+    }
+
+
+    .social-links a {
+
+        width: 35px;
+
+        height: 35px;
+
+        border: 1px solid #9d8975;
+
+        border-radius: 50%;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        color: white;
+
+        text-decoration: none;
+
+    }
+
+
+    .social-links a:hover {
+
+        background-color: #e6c89c;
+
+        color: #482903;
+
+    }
+
+
+    .footer-column {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 12px;
+
+    }
+
+
+    .footer-column h3 {
+
+        color: #e6c89c;
+
+        font-size: 18px;
+
+        margin-bottom: 8px;
+
+    }
+
+
+    .footer-column a {
+
+        color: #d8c7b5;
+
+        text-decoration: none;
+
+        font-size: 14px;
+
+    }
+
+
+    .footer-column a:hover {
+
+        color: white;
+
+    }
+
+
+    .footer-bottom {
+
+        text-align: center;
+
+        border-top: 1px solid #5b4939;
+
+        margin-top: 35px;
+
+        padding-top: 18px;
+
+        color: #bba999;
+
+        font-size: 13px;
+
+    }
+
+
+
+    @media (max-width: 900px) {
+
+        header {
+
+            padding: 0 20px;
+
+        }
+
+
+        nav {
+
+            gap: 10px;
+
+        }
+
+
+        nav a {
+
+            font-size: 13px;
+
+        }
+
+
+        .about-hero {
+
+            padding: 35px;
+
+        }
+
+
+        .hero-text h1 {
+
+            font-size: 48px;
+
+        }
+
+
+        .why-container,
+        .values-container {
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .why-card,
+        .value-card {
+
+            min-width: 45%;
+
+        }
+
+
+        .message-container {
+
+            flex-direction: column;
+
+        }
+
+
+        .message-info,
+        .message-form {
+
+            width: 100%;
+
+        }
+
+
+        .footer-main {
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .footer-brand {
+
+            width: 100%;
+
+        }
+
+    }
+
+    @media (max-width: 600px) {
+
+        header {
+
+            height: 70px;
+
+        }
+
+
+        body {
+
+            padding-top: 70px;
+
+        }
+
+
+        .logo {
+
+            font-size: 28px;
+
+        }
+
+
+        /* SHOW HAMBURGER */
+
+        .hamburger {
+
+            display: block;
+
+        }
+
+
+        /* HIDE MENU INITIALLY */
+
+        nav {
+
+            display: none;
+
+            position: absolute;
+
+            top: 70px;
+
+            left: 0;
+
+            width: 100%;
+
+            background-color: rgb(72, 41, 3);
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 0;
+
+            padding: 10px 0;
+
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+
+        }
+
+
+        #menu-toggle:checked ~ nav {
+
+            display: flex;
+
+        }
+
+
+        /* NAVIGATION LINKS */
+
+        nav a {
+
+            width: 100%;
+
+            text-align: center;
+
+            padding: 14px 0;
+
+            font-size: 15px;
+
+        }
+
+
+        nav a:hover {
+
+            background-color: rgba(255,255,255,0.08);
+
+        }
+
+
+        .about-hero {
+
+            margin: 20px;
+
+            padding: 25px;
+
+            flex-direction: column;
+
+            text-align: center;
+
+        }
+
+
+        .hero-text {
+
+            width: 100%;
+
+        }
+
+
+        .hero-small {
+
+            font-size: 20px;
+
+        }
+
+
+        .hero-text h1 {
+
+            font-size: 42px;
+
+        }
+
+
+        .hero-text p {
+
+            font-size: 14px;
+
+        }
+
+
+        .hero-image {
+
+            width: 100%;
+
+            height: 200px;
+
+            margin-top: 25px;
+
+        }
+
+
+        .why-section,
+        .values-section,
+        .message-section {
+
+            margin: 20px;
+
+            padding: 25px 20px;
+
+        }
+
+
+        .section-title {
+
+            font-size: 28px;
+
+        }
+
+
+        .why-container,
+        .values-container {
+
+            flex-direction: column;
+
+        }
+
+
+        .why-card,
+        .value-card {
+
+            width: 100%;
+
+        }
+
+
+        .message-info,
+        .message-form {
+
+            padding: 22px;
+
+        }
+
+
+        .footer {
+
+            padding: 35px 25px 20px;
+
+        }
+
+
+        .footer-main {
+
+            flex-direction: column;
+
+            gap: 30px;
+
+        }
+
+
+        .footer-brand {
+
+            width: 100%;
+
+        }
+
+    }
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<header>
+
+
+    <div class="logo">
+
+        <span class="z">Z</span>winkit
+
+    </div>
+
+
+   
+
+    <input type="checkbox" id="menu-toggle">
+
+
+  
+
+    <label for="menu-toggle" class="hamburger">
+
+        ☰
+
+    </label>
+
+
+    <nav>
+
+
+        <a href="Home.html">
+
+            Home
+
+        </a>
+
+
+        <a href="Restaurant.html">
+
+            Restaurant
+
+        </a>
+
+
+        <a href="offers.html">
+
+            Offers
+
+        </a>
+
+
+        <a href="About.html" class="active">
+
+            About Us
+
+        </a>
+
+
+        <a href="Cart.html">
+
+            Cart
+
+        </a>
+
+
+        <a href="Login.html">
+
+            Login/Sign Up
+
+        </a>
+
+
+    </nav>
+
+
+</header>
+
+
+<mai
+
+
+    <section class="about-hero">
+
+
+        <div class="hero-text">
+
+
+            <h3 class="hero-small">
+
+                Welcome to Zwinkit 🍽️
+
+            </h3>
+
+
+            <h1>
+
+                Food that makes
+
+                <span>you happy.</span>
+
+            </h1>
+
+
+            <p>
+
+                Zwinkit is your simple and convenient food
+                delivery destination. Discover delicious food,
+                explore restaurants and enjoy your favourite
+                meals from the comfort of your home.
+
+            </p>
+
+
+        </div>
+
+
+
+        <img
+
+            src="images/pizza.jpeg"
+
+            alt="Delicious Food"
+
+            class="hero-image"
+
+        >
+
+
+    </section>
+
+
+
+
+    <section class="why-section">
+
+
+        <h2 class="section-title">
+
+            Why choose <span>Zwinkit?</span>
+
+        </h2>
+
+
+
+        <div class="why-container">
+
+
+
+            <div class="why-card">
+
+
+                <div class="why-icon">
+
+                    🍕
+
+                </div>
+
+
+                <h3>
+
+                    Delicious Food
+
+                </h3>
+
+
+                <p>
+
+                    Explore a variety of tasty dishes
+                    from different cuisines and restaurants.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="why-card">
+
+
+                <div class="why-icon">
+
+                    ⚡
+
+                </div>
+
+
+                <h3>
+
+                    Quick Delivery
+
+                </h3>
+
+
+                <p>
+
+                    Get your favourite meals delivered
+                    conveniently without waiting too long.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="why-card">
+
+
+                <div class="why-icon">
+
+                    💰
+
+                </div>
+
+
+                <h3>
+
+                    Great Offers
+
+                </h3>
+
+
+                <p>
+
+                    Enjoy exciting discounts and offers
+                    while ordering your favourite food.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="why-card">
+
+
+                <div class="why-icon">
+
+                    ❤️
+
+                </div>
+
+
+                <h3>
+
+                    Easy Experience
+
+                </h3>
+
+
+                <p>
+
+                    Browse, choose and order food through
+                    a simple and user-friendly experience.
+
+                </p>
+
+
+            </div>
+
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <section class="values-section">
+
+
+        <h2 class="section-title">
+
+            What we <span>care about</span>
+
+        </h2>
+
+
+
+        <div class="values-container">
+
+
+
+            <div class="value-card">
+
+
+                <h3>
+
+                    Freshness 🌱
+
+                </h3>
+
+
+                <p>
+
+                    We believe that good food starts with
+                    quality ingredients and delicious preparation.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="value-card">
+
+
+                <h3>
+
+                    Variety 🍜
+
+                </h3>
+
+
+                <p>
+
+                    From pizza and burgers to Indian,
+                    Chinese and desserts, there is something
+                    for every craving.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="value-card">
+
+
+                <h3>
+
+                    Convenience 🛵
+
+                </h3>
+
+
+                <p>
+
+                    Our goal is to make finding and ordering
+                    your favourite food simple and convenient.
+
+                </p>
+
+
+            </div>
+
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+    <section class="message-section">
+
+
+        <div class="message-container">
+
+
+
+            <!-- CONTACT INFORMATION -->
+
+
+            <div class="message-info">
+
+
+                <h2>
+
+                    We'd love to hear from you 💬
+
+                </h2>
+
+
+                <p>
+
+                    Have a question, suggestion or feedback?
+                    Send us a message and let us know what
+                    you think about Zwinkit.
+
+                </p>
+
+
+
+                <div class="contact-item">
+
+                    📞 <strong>+91 98765 43210</strong>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    ✉️ <strong>support@zwinkit.com</strong>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    📍 <strong>Ludhiana, Punjab, India</strong>
+
+                </div>
+
+
+            </div>
+
+
+
+
+            <div class="message-form">
+
+
+                <h2>
+
+                    Send us a message
+
+                </h2>
+
+
+
+                <div class="form-group">
+
+
+                    <label>
+
+                        Your Name
+
+                    </label>
+
+
+                    <input
+
+                        type="text"
+
+                        placeholder="Enter your name"
+
+                    >
+
+
+                </div>
+
+
+
+
+                <div class="form-group">
+
+
+                    <label>
+
+                        Email Address
+
+                    </label>
+
+
+                    <input
+
+                        type="email"
+
+                        placeholder="Enter your email"
+
+                    >
+
+
+                </div>
+
+
+
+
+                <div class="form-group">
+
+
+                    <label>
+
+                        Message
+
+                    </label>
+
+
+                    <textarea
+
+                        placeholder="Write your message..."
+
+                    ></textarea>
+
+
+                </div>
+
+
+
+                <button class="send-btn">
+
+                    Send Message
+
+                </button>
+
+
+            </div>
+
+
+
+        </div>
+
+
+    </section>
+
+
+
+</main>
+
+
+
+<footer class="footer">
+
+
+    <div class="footer-main">
+
+
+
+        <!-- BRAND -->
+
+
+        <div class="footer-brand">
+
+
+            <h2>
+
+                Zwinkit
+
+            </h2>
+
+
+            <p>
+
+                Good food. Great mood.
+
+            </p>
+
+
+            <div class="social-links">
+
+
+                <a href="#">
+
+                    f
+
+                </a>
+
+
+                <a href="#">
+
+                    ◎
+
+                </a>
+
+
+                <a href="#">
+
+                    𝕏
+
+                </a>
+
+
+                <a href="#">
+
+                    ▶
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+
+            <h3>
+
+                Company
+
+            </h3>
+
+
+            <a href="Home.html">
+
+                Home
+
+            </a>
+
+
+            <a href="Restaurant.html">
+
+                Restaurant
+
+            </a>
+
+
+            <a href="offers.html">
+
+                Offers
+
+            </a>
+
+
+            <a href="About.html">
+
+                About Us
+
+            </a>
+
+
+        </div>
+
+
+        <div class="footer-column">
+
+
+            <h3>
+
+                Help & Support
+
+            </h3>
+
+
+            <a href="About.html">
+
+                Help Center
+
+            </a>
+
+
+            <a href="About.html">
+
+                FAQs
+
+            </a>
+
+
+            <a href="About.html">
+
+                Privacy Policy
+
+            </a>
+
+
+            <a href="About.html">
+
+                Refund Policy
+
+            </a>
+
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+
+            <h3>
+
+                Account
+
+            </h3>
+
+
+            <a href="Login.html">
+
+                Login/Sign Up
+
+            </a>
+
+
+            <a href="Cart.html">
+
+                Cart
+
+            </a>
+
+
+            <a href="checkout.html">
+
+                Checkout
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+    <div class="footer-bottom">
+
+        © 2026 Zwinkit. All rights reserved.
+
+    </div>
+
+
+</footer>
+
+<script>
+    const name = document.querySelector('input[type="text"]');
+    const email = document.querySelector('input[type="email"]');
+    const message = document.querySelector('textarea');
+    const button = document.querySelector('.send-btn');
+
+    button.addEventListener("click", function(event) {
+        event.preventDefault();
+
+        if (name.value.trim() === "" ||
+            email.value.trim() === "" ||
+            message.value.trim() === "") {
+
+            alert("Please fill all the fields");
+        }
+        else if (!email.checkValidity()) {
+            alert("Please enter a valid email");
+        }
+        else {
+            let messages = JSON.parse(
+                localStorage.getItem("contactMessages") || "[]"
+            );
+
+            let newMessage = {
+                name: name.value.trim(),
+                email: email.value.trim(),
+                message: message.value.trim()
+            };
+
+            messages.push(newMessage);
+
+            localStorage.setItem(
+                "contactMessages",
+                JSON.stringify(messages)
+            );
+
+            alert("Message submitted successfully!");
+
+            name.value = "";
+            email.value = "";
+            message.value = "";
+        }
+    });
+</script>
+
+</body>
+
+
+</html>
