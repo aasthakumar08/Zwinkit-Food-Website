@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation | Zwinkit</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #faf5eb;
+            color: #3d281c;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 7%;
+            background-color: #fffaf2;
+            border-bottom: 1px solid #eadbc8;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            color: #713a16;
+        }
+
+        .home-link {
+            text-decoration: none;
+            color: #713a16;
+            font-weight: bold;
+        }
+
+        /* Main Section */
+        .container {
+            max-width: 650px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .order-box {
+            background-color: white;
+            padding: 35px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(90, 55, 25, 0.08);
+        }
+
+        .success-icon {
+            width: 85px;
+            height: 85px;
+            background-color: #e5f3dc;
+            color: #43813a;
+            border-radius: 50%;
+            font-size: 48px;
+            line-height: 85px;
+            margin: 0 auto 20px;
+        }
+
+        h1 {
+            color: #43813a;
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .message {
+            color: #777;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* Order Details */
+        .details {
+            background-color: #faf5eb;
+            padding: 22px;
+            border-radius: 15px;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .details h2 {
+            font-size: 20px;
+            margin-bottom: 18px;
+            color: #713a16;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .detail-row span:first-child {
+            color: #777;
+        }
+
+        .detail-row span:last-child {
+            text-align: right;
+            overflow-wrap: anywhere;
+        }
+
+        .total {
+            border-top: 1px solid #dfcbb5;
+            padding-top: 15px;
+            margin-top: 5px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Delivery Message */
+        .delivery {
+            background-color: #f3e3c7;
+            padding: 18px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .delivery h3 {
+            color: #713a16;
+            margin-bottom: 8px;
+        }
+
+        .delivery p {
+            font-size: 14px;
+            color: #684c37;
+            line-height: 1.6;
+        }
+
+        /* Buttons */
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .shop-btn {
+            background-color: #713a16;
+            color: white;
+        }
+
+        .home-btn {
+            background-color: #eee2d1;
+            color: #713a16;
+        }
+
+        .btn:hover {
+            opacity: 0.85;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #887766;
+            font-size: 13px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            nav {
+                padding: 18px 5%;
+            }
+
+            .container {
+                margin: 25px auto;
+                padding: 15px;
+            }
+
+            .order-box {
+                padding: 25px 18px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            .detail-row {
+                font-size: 14px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">Zwinkit</div>
+        <a href="Home.html" class="home-link">Home</a>
+    </nav>
+
+    <!-- Order Confirmation -->
+    <div class="container">
+
+        <div class="order-box">
+
+            <div class="success-icon">&#10003;</div>
+
+            <h1>Order Placed Successfully!</h1>
+
+            <p class="message">
+                Thank you for ordering with Zwinkit!
+                Your delicious food is being prepared.
+            </p>
+
+            <!-- Order Details -->
+            <div class="details">
+
+                <h2>Order Details</h2>
+
+                <div class="detail-row">
+                    <span>Order ID</span>
+                    <span id="orderId">ZW123456</span>
+                </div>
+
+                <div class="detail-row">
+                    <span>Customer Name</span>
+                    <span id="customerName">Customer</span>
+                </div>
+
+                <div class="detail-row">
+                    <span>Mobile Number</span>
+                    <span id="customerMobile">Not provided</span>
+                </div>
+
+                <div class="detail-row">
+                    <span>Payment Method</span>
+                    <span id="paymentMethod">Cash on Delivery</span>
+                </div>
+
+                <div class="detail-row">
+                    <span>Item Total</span>
+                    <span>₹785</span>
+                </div>
+
+                <div class="detail-row">
+                    <span>Delivery Charges</span>
+                    <span>₹20</span>
+                </div>
+
+                <div class="detail-row">
+                    <span>Discount</span>
+                    <span>-₹50</span>
+                </div>
+
+                <div class="detail-row total">
+                    <span>Total Paid / Payable</span>
+                    <span>₹755</span>
+                </div>
+
+                <div class="detail-row">
+                    <span>Delivery Address</span>
+                    <span id="customerAddress">Not provided</span>
+                </div>
+
+            </div>
+
+            <!-- Delivery Information -->
+            <div class="delivery">
+
+                <h3>Food is on its way!</h3>
+
+                <p>
+                    Your order will be delivered to your doorstep.
+                    Estimated delivery time: 30–45 minutes.
+                </p>
+
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="buttons">
+
+                <a href="Restaurant.html" class="btn shop-btn">
+                    Continue Shopping
+                </a>
+
+                <a href="Home.html" class="btn home-btn">
+                    Back to Home
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        © 2026 Zwinkit. Made with love for food lovers.
+    </footer>
+
+    <script>
+        // Generate a simple order ID
+        const orderId = "ZW" + Math.floor(100000 + Math.random() * 900000);
+
+        document.getElementById("orderId").innerText = orderId;
+
+        // Get customer details from checkout page
+        const name = localStorage.getItem("customerName");
+        const mobile = localStorage.getItem("customerMobile");
+        const address = localStorage.getItem("customerAddress");
+        const payment = localStorage.getItem("paymentMethod");
+
+        if (name != null) {
+            document.getElementById("customerName").innerText = name;
+        }
+
+        if (mobile != null) {
+            document.getElementById("customerMobile").innerText = mobile;
+        }
+
+        if (address != null) {
+            document.getElementById("customerAddress").innerText = address;
+        }
+
+        if (payment != null) {
+            document.getElementById("paymentMethod").innerText = payment;
+        }
+    </script>
+
+</body>
+</html>

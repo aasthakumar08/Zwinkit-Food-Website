@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up - Zwinkit</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Montenegrin+Gothic+One&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Tangerine:wght@400;700&family=Yuyu&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fffaf0;
+    color: #3b2414;
+}
+
+header {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    background-color: rgb(72, 41, 3);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    font-family: serif;
+}
+
+.logo {
+    font-size: 38px;
+    font-weight: bold;
+    color: #e6c89c;
+}
+
+.logo span {
+    color: #e6c89c;
+}
+
+.z {
+    display: inline-block;
+    animation: zFloat 2.5s ease-out forwards;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: burlywood;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: rgb(233, 165, 75);
+}
+
+.page {
+    width: 92%;
+    max-width: 1150px;
+    margin: 120px auto 60px;
+}
+
+.signup-container {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    background: white;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(72, 41, 3, .15);
+    min-height: 600px;
+}
+
+.signup-left {
+    background: #482903;
+    color: #fff;
+    padding: 45px;
+    position: relative;
+    overflow: hidden;
+}
+
+.left-content {
+    position: relative;
+    z-index: 2;
+}
+
+.mini-logo {
+    display: inline-block;
+    background: #e6c89c;
+    color: #482903;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.signup-left h1 {
+    font-size: 42px;
+    line-height: 1.1;
+    margin-bottom: 18px;
+}
+
+.signup-left h1 span {
+    color: #e6c89c;
+}
+
+.signup-left > .left-content > p {
+    color: #e9d9c1;
+    line-height: 1.6;
+    font-size: 15px;
+    max-width: 380px;
+}
+
+.food-circle {
+    width: 210px;
+    height: 210px;
+    background: #ffecd7;
+    border-radius: 50%;
+    margin: 35px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 100px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+}
+
+.benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.benefit {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: #f5e9d8;
+}
+
+.benefit-icon {
+    width: 32px;
+    height: 32px;
+    background: #e6c89c;
+    color: #482903;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+}
+
+.signup-right {
+    padding: 45px 50px;
+}
+
+.form-heading {
+    margin-bottom: 28px;
+}
+
+.form-heading h2 {
+    font-size: 30px;
+    margin-bottom: 7px;
+}
+
+.form-heading p {
+    color: #777;
+    font-size: 14px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.field.full {
+    grid-column: 1 / -1;
+}
+
+.field label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #4a2c1a;
+}
+
+.field input {
+    padding: 13px 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fffaf5;
+    outline: none;
+    font-size: 14px;
+    transition: .3s;
+}
+
+.field input:focus {
+    border-color: #70400f;
+    box-shadow: 0 0 0 3px rgba(112, 64, 15, .1);
+}
+
+.password-note {
+    font-size: 11px;
+    color: #888;
+    margin-top: 3px;
+}
+
+.terms {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 18px;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.terms input {
+    margin-top: 2px;
+}
+
+.terms a {
+    color: #70400f;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.create-btn {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #70400f;
+    color: white;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 10px;
+    margin-top: 22px;
+    font-size: 15px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.create-btn:hover {
+    background: #482903;
+    transform: translateY(-2px);
+    box-shadow: 0 7px 18px rgba(72, 41, 3, .2);
+}
+
+.login-text {
+    text-align: center;
+    font-size: 13px;
+    margin-top: 20px;
+    color: #777;
+}
+
+.login-text a {
+    color: #70400f;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.quick-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.info-box {
+    background: #f5e9d8;
+    border-radius: 12px;
+    padding: 14px 10px;
+    text-align: center;
+}
+
+.info-box strong {
+    display: block;
+    font-size: 16px;
+    color: #482903;
+    margin-bottom: 4px;
+}
+
+.info-box span {
+    font-size: 11px;
+    color: #777;
+}
+
+footer {
+    background: #482903;
+    color: #e6c89c;
+    padding: 28px 45px 15px;
+}
+
+.footer-main {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr 1fr;
+    gap: 25px;
+}
+
+.footer-brand h2 {
+    font-size: 24px;
+    margin-bottom: 7px;
+}
+
+.footer-brand p,
+.footer-column a {
+    font-size: 12px;
+    color: #e6c89c;
+}
+
+.footer-column h3 {
+    font-size: 14px;
+    margin-bottom: 9px;
+}
+
+.footer-column a {
+    display: block;
+    text-decoration: none;
+    margin: 6px 0;
+}
+
+.footer-column a:hover {
+    color: #e9a54b;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(230, 200, 156, .25);
+    margin-top: 20px;
+    padding-top: 12px;
+    font-size: 11px;
+}
+
+@media (max-width: 850px) {
+    header {
+        padding: 0 20px;
+    }
+
+    nav {
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .signup-container {
+        grid-template-columns: 1fr;
+    }
+
+    .signup-left {
+        padding: 35px;
+        text-align: center;
+    }
+
+    .signup-left > .left-content > p {
+        margin: auto;
+    }
+
+    .benefits {
+        align-items: center;
+    }
+
+    .signup-right {
+        padding: 35px;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    nav a:not(.login-btn) {
+        display: none;
+    }
+
+    .page {
+        width: 94%;
+        margin-top: 100px;
+    }
+
+    .signup-left {
+        padding: 30px 25px;
+    }
+
+    .signup-left h1 {
+        font-size: 32px;
+    }
+
+    .food-circle {
+        width: 150px;
+        height: 150px;
+        font-size: 70px;
+    }
+
+    .signup-right {
+        padding: 30px 22px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .field.full {
+        grid-column: auto;
+    }
+
+    .quick-info {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <span class="z">Z</span>winkit
+    </div>
+
+    <nav>
+        <a href="Home.html">Home</a>
+        <a href="Restaurant.html">Restaurants</a>
+        <a href="offers.html">Offers</a>
+        <a href="About.html">About Us</a>
+        <a href="Cart.html">Cart</a>
+        <a href="Login.html" class="login-btn">Sign Up</a>
+    </nav>
+</header>
+
+<main class="page">
+    <div class="signup-container">
+
+        <section class="signup-left">
+            <div class="left-content">
+
+                <div class="mini-logo">
+                    🍴 WELCOME TO ZWINKIT
+                </div>
+
+                <h1>
+                    Good food<br>
+                    starts with<br>
+                    <span>you.</span>
+                </h1>
+
+                <p>
+                    Create your Zwinkit account and discover
+                    delicious food, exciting offers and your
+                    favourite restaurants all in one place.
+                </p>
+
+                <div class="food-circle">
+                    🍕
+                </div>
+
+                <div class="benefits">
+                    <div class="benefit">
+                        <div class="benefit-icon">⚡</div>
+                        <span>Quick and easy ordering</span>
+                    </div>
+
+                    <div class="benefit">
+                        <div class="benefit-icon">🎁</div>
+                        <span>Exclusive member offers</span>
+                    </div>
+
+                    <div class="benefit">
+                        <div class="benefit-icon">❤️</div>
+                        <span>Save your favourite food</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="signup-right">
+
+            <div class="form-heading">
+                <h2>Create Account</h2>
+                <p>It only takes a minute to get started.</p>
+            </div>
+
+            <div class="form-grid">
+
+                <div class="field full">
+                    <label for="fullName">Full Name</label>
+                    <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        placeholder="Enter your name"
+                        autocomplete="name"
+                    >
+                </div>
+
+                <div class="field full">
+                    <label for="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                    >
+                </div>
+
+                <div class="field full">
+                    <label for="phone">Phone</label>
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Enter phone number"
+                        autocomplete="tel"
+                    >
+                </div>
+
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Create password"
+                        autocomplete="new-password"
+                    >
+                    <span class="password-note">Use at least 8 characters</span>
+                </div>
+
+                <div class="field">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        placeholder="Confirm password"
+                        autocomplete="new-password"
+                    >
+                </div>
+
+            </div>
+
+            <div class="terms">
+                <input type="checkbox" id="terms">
+                <span>
+                    I agree to the
+                    <a href="#">Terms &amp; Conditions</a>
+                    and
+                    <a href="#">Privacy Policy</a>.
+                </span>
+            </div>
+
+            <button type="button" id="createAccountBtn" class="create-btn">
+                Create My Account →
+            </button>
+
+            <p class="login-text">
+                Already have an account?
+                <a href="Login.html">Login</a>
+            </p>
+
+            <div class="quick-info">
+                <div class="info-box">
+                    <strong>10K+</strong>
+                    <span>Happy Users</span>
+                </div>
+
+                <div class="info-box">
+                    <strong>100+</strong>
+                    <span>Food Choices</span>
+                </div>
+
+                <div class="info-box">
+                    <strong>24/7</strong>
+                    <span>Food Cravings</span>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+</main>
+
+<footer>
+    <div class="footer-main">
+
+        <div class="footer-brand">
+            <h2>Zwinkit</h2>
+            <p>Good food. Great mood.</p>
+        </div>
+
+        <div class="footer-column">
+            <h3>Company</h3>
+            <a href="Home.html">Home</a>
+            <a href="Restaurant.html">Restaurants</a>
+            <a href="offers.html">Offers</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+
+        <div class="footer-column">
+            <h3>Help &amp; Support</h3>
+            <a href="contact.html">Help Center</a>
+            <a href="contact.html">FAQs</a>
+            <a href="contact.html">Privacy Policy</a>
+            <a href="contact.html">Refund Policy</a>
+        </div>
+
+        <div class="footer-column">
+            <h3>Account</h3>
+            <a href="Login.html">Login</a>
+            <a href="Signup.html">Sign Up</a>
+            <a href="Cart.html">Cart</a>
+            <a href="checkout.html">Checkout</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 Zwinkit. All rights reserved.
+    </div>
+</footer>
+
+<script>
+let fullName = document.getElementById("fullName");
+let email = document.getElementById("email");
+let phone = document.getElementById("phone");
+let password = document.getElementById("password");
+let confirmPassword = document.getElementById("confirmPassword");
+let terms = document.getElementById("terms");
+let createAccountBtn = document.getElementById("createAccountBtn");
+
+createAccountBtn.addEventListener("click", function () {
+
+    if (
+        fullName.value.trim() === "" ||
+        email.value.trim() === "" ||
+        phone.value.trim() === "" ||
+        password.value === "" ||
+        confirmPassword.value === ""
+    ) {
+        alert("Please fill all the fields.");
+        return;
+    }
+
+    if (!email.checkValidity()) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    if (password.value.length < 8) {
+        alert("Password must contain at least 8 characters.");
+        return;
+    }
+
+    if (password.value !== confirmPassword.value) {
+        alert("Passwords do not match.");
+        return;
+    }
+
+    if (!/^\d{10}$/.test(phone.value.trim())) {
+        alert("Enter a valid 10-digit phone number.");
+        return;
+    }
+
+    if (!terms.checked) {
+        alert("Please accept Terms & Conditions.");
+        return;
+    }
+
+    let users = JSON.parse(localStorage.getItem("zwinkitUsers")) || [];
+
+    let cleanEmail = email.value.trim().toLowerCase();
+
+    let existingUser = users.find(function (user) {
+        return user.email.toLowerCase() === cleanEmail;
+    });
+
+    if (existingUser) {
+        alert("Email already registered.");
+        return;
+    }
+
+    let newUser = {
+        fullName: fullName.value.trim(),
+        username: cleanEmail,
+        email: cleanEmail,
+        phone: phone.value.trim(),
+        password: password.value
+    };
+
+    users.push(newUser);
+
+    localStorage.setItem("zwinkitUsers", JSON.stringify(users));
+
+    alert("Account created successfully! Please login.");
+
+    window.location.href = "Login.html";
+});
+</script>
+
+</body>
+</html>

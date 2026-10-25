@@ -1,0 +1,1092 @@
+
+:root {
+  font-family: "Bricolage Grotesque", sans-serif;
+  color: #3b2414;
+  background: #fffaf3;
+  font-synthesis: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  padding-top: 80px;
+  background: #fffaf3;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+header {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  background-color: rgb(72, 41, 3);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 38px;
+  font-weight: 800;
+  color: #e6c89c;
+}
+
+.z {
+  display: inline-block;
+  color: #f0b35c;
+  animation: zFloat 2.5s ease-out forwards;
+}
+
+@keyframes zFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: #f1d4a5;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: rgb(233, 165, 75);
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
+}
+
+.class1 {
+  color: #3b2414;
+  background-color: #ffecd7;
+  margin: 20px;
+  padding: 25px 30px;
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 25px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.18);
+}
+
+.class1 > :not(.pizza) {
+  position: relative;
+  z-index: 2;
+}
+
+.class1::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #ffecd7 35%, transparent 72%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.class1 h3 {
+  color: #9a5b00;
+}
+
+.class1 h2 {
+  color: #4a2c1a;
+}
+
+.class1 p {
+  color: #5a3a24;
+}
+
+.pizza {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 57%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0 25px 25px 0;
+}
+
+.craving {
+  font-family: "Tangerine", cursive;
+  font-weight: 700;
+  font-size: 48px;
+  color: #9a5b00;
+}
+
+.delecious {
+  color: #3b2414;
+  font-size: 70px;
+  font-weight: 800;
+}
+
+.hero-subtitle {
+  font-size: 30px;
+  margin: 0 0 10px;
+}
+
+.quote {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  max-width: 560px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px #00000014;
+  padding: 5px;
+}
+
+.search-form select {
+  width: 175px;
+  padding: 12px;
+  border: 0;
+  border-right: 1px solid #ddd;
+  outline: 0;
+  cursor: pointer;
+}
+
+.search-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px;
+  border: 0;
+  outline: 0;
+}
+
+.craving-section {
+  background-color: #e8f1e3;
+  padding: 35px;
+  margin: 25px 35px;
+  border-radius: 25px;
+}
+
+.section-title,
+.offer-title,
+.restaurant-title {
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.section-title span {
+  color: #e6c89c;
+  font-size: 40px;
+  margin: 0 20px;
+}
+
+.category-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.category-card {
+  width: 160px;
+  min-height: 175px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 15px 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+}
+
+.category-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 8px;
+  transition: 0.3s ease;
+}
+
+.category-card:hover img {
+  transform: scale(1.1);
+}
+
+.category-card h3 {
+  font-size: 22px;
+  margin: 0;
+  transition: 0.3s ease;
+}
+
+.category-card:hover h3 {
+  color: #d47700;
+}
+
+.pizza-card {
+  background-color: #f6d6b8;
+}
+
+.Burger-card {
+  background-color: #c9ddb8;
+}
+
+.indian-card {
+  background-color: #f4d99b;
+}
+
+.chinese-card {
+  background-color: #c9cee5;
+}
+
+.rolls-card {
+  background-color: #f3c9a8;
+}
+
+.dessert-card {
+  background-color: #efc2c2;
+}
+
+.beverage-card {
+  background-color: #bcd9e8;
+}
+
+.offer-section {
+  background-color: #f5e9d8;
+  margin: 25px 35px;
+  padding: 25px 35px;
+  border-radius: 25px;
+}
+
+.offer-title {
+  margin-bottom: 25px;
+}
+
+.offer-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.offer-card {
+  min-height: 120px;
+  flex: 1 1 280px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 25px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.offer-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+}
+
+.offer1 {
+  background-color: #b8d8c0;
+}
+
+.offer2 {
+  background-color: #f4cfcf;
+}
+
+.offer3 {
+  background-color: #a9c7ed;
+}
+
+.offer-text h2 {
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.offer-text p {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.offer-card img {
+  width: 180px;
+  height: 120px;
+  object-fit: contain;
+  transition: 0.4s ease;
+}
+
+.offer-card:hover img {
+  transform: scale(1.08);
+}
+
+.offer1 button {
+  background-color: white;
+  border: 1px dashed #d49956;
+  padding: 6px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.restaurant-section {
+  background-color: #ddd2c1;
+  padding: 35px;
+  margin: 25px 35px;
+  border-radius: 25px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+}
+
+.restaurant-title {
+  margin-bottom: 25px;
+}
+
+.restaurant-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.restaurant-card {
+  width: 230px;
+  flex: 1 1 190px;
+  max-width: 230px;
+  background-color: white;
+  border-radius: 18px;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 5px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.restaurant-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+}
+
+.restaurant-card img {
+  width: 100%;
+  height: 165px;
+  object-fit: cover;
+  display: block;
+}
+
+.restaurant-card h3 {
+  font-size: 20px;
+  margin: 10px 5px 5px;
+}
+
+.restaurant-card p {
+  font-size: 14px;
+  margin: 5px;
+  color: #444;
+}
+
+.food-row {
+  display: flex;
+  gap: 20px;
+  margin: 25px 35px;
+}
+
+.budget-section,
+.night-section {
+  width: 50%;
+  min-width: 0;
+  padding: 20px;
+  border-radius: 25px;
+}
+
+.budget-section {
+  background-color: #dfe7d5;
+}
+
+.night-section {
+  background-color: #362c48;
+}
+
+.budget-title,
+.night-title {
+  text-align: center;
+  font-size: 28px;
+  margin: 0 0 22px;
+}
+
+.night-title {
+  color: rgb(241, 239, 244);
+}
+
+.budget-container,
+.night-container {
+  display: flex;
+  gap: 10px;
+}
+
+.budget-card,
+.night-card {
+  width: 25%;
+  min-width: 0;
+  background-color: rgb(241, 239, 244);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.budget-card:hover,
+.night-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+}
+
+.budget-card img,
+.night-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}
+
+.budget-info,
+.night-info {
+  padding: 10px 10px 12px;
+  color: #3b2414;
+}
+
+.budget-info h3,
+.night-info h3 {
+  font-size: 17px;
+  margin: 0 0 5px;
+}
+
+.budget-info p,
+.night-info p {
+  font-size: 14px;
+  color: #3b3636;
+  margin: 0 0 5px;
+}
+
+.price,
+.night-price {
+  font-size: 17px;
+  font-weight: bold;
+  color: #70460c;
+}
+
+.footer {
+  background-color: #2b1d12;
+  color: #fffaf3;
+  margin-top: 30px;
+  padding: 45px 60px 20px;
+  border-radius: 3px 3px 0 0;
+}
+
+.footer-main {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  max-width: 1300px;
+  margin: auto;
+}
+
+.footer-brand {
+  width: 22%;
+}
+
+.footer-brand h2 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.footer-brand h2 span {
+  color: #e6c89c;
+}
+
+.footer-brand p {
+  color: #d8c7b5;
+  margin-bottom: 25px;
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.social-links a {
+  width: 35px;
+  height: 35px;
+  border: 1px solid #9d8975;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-column h3 {
+  color: #e6c89c;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.footer-column a {
+  color: #d8c7b5;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-column a:hover {
+  color: white;
+}
+
+.subscribe {
+  width: 220px;
+}
+
+.subscribe p {
+  color: #d8c7b5;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.subscribe input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #5b4939;
+  margin-top: 35px;
+  padding-top: 18px;
+  color: #bba999;
+  font-size: 13px;
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 0 18px;
+  }
+
+  .menu-icon {
+    display: block;
+    color: #e6c89c;
+    font-size: 30px;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    padding: 10px 20px 18px;
+    background-color: rgb(72, 41, 3);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.12);
+  }
+
+  .menu-toggle:checked ~ nav {
+    display: flex;
+  }
+
+  nav a {
+    display: block;
+    padding: 14px 8px;
+    font-size: 16px;
+  }
+
+  .class1 {
+    height: auto;
+    min-height: 560px;
+    margin: 15px;
+    padding: 25px 20px 250px;
+  }
+
+  .class1::after {
+    background: linear-gradient(#ffecd7 48%, transparent 78%);
+  }
+
+  .craving {
+    font-size: 45px;
+  }
+
+  .delecious {
+    font-size: 48px;
+  }
+
+  .class1 h3[style] {
+    font-size: 25px !important;
+  }
+
+  .quote {
+    font-size: 15px;
+  }
+
+  .search-form,
+  .class1 form {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-form select,
+  .class1 form select {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+  }
+
+  .search-form input,
+  .class1 form input {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .pizza {
+    width: 100%;
+    height: 220px;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    border-radius: 0 0 25px 25px;
+  }
+
+  .craving-section,
+  .offer-section,
+  .restaurant-section {
+    margin: 18px 15px;
+    padding: 25px 15px;
+  }
+
+  .section-title,
+  .offer-title,
+  .restaurant-title {
+    font-size: 27px;
+  }
+
+  .section-title span {
+    font-size: 30px;
+    margin: 0 8px;
+  }
+
+  .category-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .category-card {
+    width: 100%;
+    min-height: 160px;
+  }
+
+  .category-card img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .category-card h3 {
+    font-size: 18px;
+  }
+
+  .offer-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .offer-card {
+    width: 100%;
+    min-height: 125px;
+    padding: 15px;
+  }
+
+  .offer-text h2 {
+    font-size: 20px;
+  }
+
+  .offer-text p {
+    font-size: 14px;
+  }
+
+  .offer-card img {
+    width: 120px;
+    height: 100px;
+  }
+
+  .restaurant-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .restaurant-card {
+    width: 100%;
+    max-width: none;
+  }
+
+  .restaurant-card img {
+    height: 190px;
+  }
+
+  .food-row {
+    flex-direction: column;
+    gap: 18px;
+    margin: 18px 15px;
+  }
+
+  .budget-section,
+  .night-section {
+    width: 100%;
+    padding: 18px 12px;
+  }
+
+  .budget-title,
+  .night-title {
+    font-size: 24px;
+  }
+
+  .budget-container,
+  .night-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .budget-card,
+  .night-card {
+    width: 100%;
+  }
+
+  .budget-card img,
+  .night-card img {
+    height: 135px;
+  }
+
+  .budget-info h3,
+  .night-info h3 {
+    font-size: 15px;
+  }
+
+  .budget-info p,
+  .night-info p {
+    font-size: 12px;
+  }
+
+  .price,
+  .night-price {
+    font-size: 15px;
+  }
+
+  .footer {
+    padding: 35px 20px 18px;
+  }
+
+  .footer-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px 20px;
+  }
+
+  .footer-brand {
+    width: 100%;
+    grid-column: 1 / -1;
+  }
+
+  .subscribe {
+    width: 100%;
+  }
+}
+
+@media (min-width: 769px) {
+  .menu-icon {
+    display: none;
+  }
+
+  nav {
+    display: flex;
+    position: static;
+    width: auto;
+    padding: 0;
+    background-color: transparent;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    box-shadow: none;
+  }
+
+  nav a {
+    padding: 0;
+  }
+
+  header {
+    padding: 0 40px;
+  }
+
+  .class1 {
+    height: 400px;
+    min-height: 0;
+    margin: 20px;
+    padding: 25px 30px;
+  }
+
+  .craving {
+    font-size: xxx-large;
+  }
+
+  .delecious {
+    font-size: 70px;
+  }
+
+  .class1 h3[style] {
+    font-size: 30px !important;
+  }
+
+  .search-form,
+  .class1 form {
+    width: 500px;
+    flex-direction: row;
+    padding: 5px;
+  }
+
+  .search-form select,
+  .class1 form select {
+    width: 160px;
+    border-right: 1px solid #ddd;
+    border-bottom: none;
+    padding: 7px;
+  }
+
+  .pizza {
+    width: 57%;
+    height: 100%;
+    top: 0;
+    bottom: auto;
+    left: auto;
+    right: 0;
+    border-radius: 0 25px 25px 0;
+  }
+
+  .craving-section,
+  .offer-section,
+  .restaurant-section {
+    margin: 25px 35px;
+    padding: 35px;
+  }
+
+  .section-title,
+  .offer-title,
+  .restaurant-title {
+    font-size: 35px;
+  }
+
+  .section-title span {
+    font-size: 40px;
+    margin: 0 20px;
+  }
+
+  .category-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+  }
+
+  .category-card {
+    width: 160px;
+    min-height: 175px;
+  }
+
+  .category-card img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .category-card h3 {
+    font-size: 22px;
+  }
+
+  .offer-container {
+    flex-direction: row;
+    gap: 25px;
+  }
+
+  .offer-card {
+    min-height: 120px;
+    padding: 15px 25px;
+  }
+
+  .offer-text h2 {
+    font-size: 25px;
+  }
+
+  .offer-text p {
+    font-size: 17px;
+  }
+
+  .offer-card img {
+    width: 180px;
+    height: 120px;
+  }
+
+  .restaurant-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .restaurant-card {
+    width: 230px;
+    max-width: 230px;
+  }
+
+  .restaurant-card img {
+    height: 165px;
+  }
+
+  .food-row {
+    flex-direction: row;
+    gap: 20px;
+    margin: 25px 35px;
+  }
+
+  .budget-section,
+  .night-section {
+    width: 50%;
+    padding: 20px;
+  }
+
+  .budget-container,
+  .night-container {
+    display: flex;
+    gap: 10px;
+  }
+
+  .budget-card,
+  .night-card {
+    width: 25%;
+  }
+
+  .budget-card img,
+  .night-card img {
+    height: 150px;
+  }
+
+  .budget-info h3,
+  .night-info h3 {
+    font-size: 17px;
+  }
+
+  .budget-info p,
+  .night-info p {
+    font-size: 14px;
+  }
+
+  .price,
+  .night-price {
+    font-size: 17px;
+  }
+
+  .footer {
+    padding: 45px 60px 20px;
+  }
+
+  .footer-main {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+  }
+
+  .footer-brand {
+    width: 22%;
+    grid-column: auto;
+  }
+
+  .subscribe {
+    width: 220px;
+  }
+}
+
+@media (max-width: 380px) {
+  .craving {
+    font-size: 38px;
+  }
+
+  .delecious {
+    font-size: 42px;
+  }
+
+  .category-card {
+    min-height: 145px;
+  }
+
+  .category-card img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .offer-card img {
+    width: 100px;
+  }
+
+  .budget-card img,
+  .night-card img {
+    height: 115px;
+  }
+}
